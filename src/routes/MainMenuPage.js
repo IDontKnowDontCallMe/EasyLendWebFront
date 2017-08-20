@@ -47,7 +47,7 @@ class MainMenuPage extends React.Component {
         <Col xs={20} sm={16} md={16} lg={16} >
           <Row style={{ margin: '24px 0 0 24px' }}>
             <div>
-              233
+              first commit test
             </div>
           </Row>
         </Col>
