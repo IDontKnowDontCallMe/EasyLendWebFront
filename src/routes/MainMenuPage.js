@@ -1,57 +1,82 @@
-import { Menu, Icon, Col, Row} from 'antd';
+import { Menu, Icon, Col, Row, Button, Layout } from 'antd';
 import React from 'react';
+import { Link } from 'dva/router';
+import QuickLoanPage from './QuickLoanPage';
 
-
+const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 class MainMenuPage extends React.Component {
+  state = {
+    collapsed: true,
+  }
+
+  toggleCollapsed = () => {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
+  }
+
   handleClick = (e) => {
     console.log('click ', e);
   }
+
   render() {
     return (
-      <Row type="flex" align="center" >
-        <Col xs={20} sm={6} md={6} lg={6} >
+      <Layout>
+        <Header>
+          <div style={{ float: 'left' }}>
+            这是logo
+          </div>
           <Menu
-            onClick={this.handleClick}
-            style={{ width: 240 }}
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            mode="inline"
+            mode="horizontal"
           >
-            <SubMenu key="sub1" title={<span><Icon type="contacts" /><span>我的信用</span></span>}>
-              <Menu.Item key="1">信用状况</Menu.Item>
+            <SubMenu title={<span><Icon type="setting" />投资</span>}>
+              <Menu.Item key="invest:1"><Link to="/investPlan" />投资计划</Menu.Item>
+              <Menu.Item key="invest:2"><Link to="/bidInvest" />散标投资</Menu.Item>
+              <Menu.Item key="invest:3"><Link to="/myInvest" />我的投资</Menu.Item>
             </SubMenu>
-            <SubMenu key="sub2" title={<span><Icon type="bank" /><span>我要贷款</span></span>}>
-              <Menu.Item key="3">我的额度</Menu.Item>
-              <Menu.Item key="4">急速贷款</Menu.Item>
-              <Menu.Item key="5">散表借款</Menu.Item>
+            <SubMenu title={<span><Icon type="setting" />借款</span>}>
+              <Menu.Item key="loan:1"><Link to="/quickLoan" />极速借款</Menu.Item>
+              <Menu.Item key="loan:2"><Link to="/bidLoan" />散标借款</Menu.Item>
+              <Menu.Item key="loan:3"><Link to="/myLoan" />我的借款</Menu.Item>
             </SubMenu>
-            <SubMenu key="sub3" title={<span><Icon type="wallet" /><span>我要还款</span></span>}>
-              <Menu.Item key="6">我的账单</Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub4" title={<span><Icon type="line-chart" /><span>我要投资</span></span>}>
-              <Menu.Item key="7">散标投资</Menu.Item>
-              <Menu.Item key="8">投资计划</Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub5" title={<span><Icon type="schedule" /><span>认证管理</span></span>}>
-              <Menu.Item key="9">身份证认证</Menu.Item>
-              <Menu.Item key="10">手机认证</Menu.Item>
-              <Menu.Item key="11">学历认证</Menu.Item>
-              <Menu.Item key="12">工作认证</Menu.Item>
-              <Menu.Item key="13">芝麻信用认证</Menu.Item>
+            <SubMenu title={<span><Icon type="setting" />还款</span>}>
+              <Menu.Item key="refund:1"><Link to="/toRefund" />我要还款</Menu.Item>
             </SubMenu>
           </Menu>
-        </Col>
-        <Col xs={20} sm={16} md={16} lg={16} >
-          <Row style={{ margin: '24px 0 0 24px' }}>
+        </Header>
+        <Layout>
+          <Sider
+            collapsible
+          >
+            <Menu>
+              <Menu.Item key="1">
+                <Icon type="pie-chart" />
+                <span>身份认证</span>
+              </Menu.Item>
+              <Menu.Item key="2">
+                <Icon type="desktop" />
+                <span>信用记录</span>
+              </Menu.Item>
+              <Menu.Item key="3">
+                <Icon type="inbox" />
+                <span>绑定银行卡</span>
+              </Menu.Item>
+              <Menu.Item key="4">
+                <Icon type="inbox" />
+                <span>激活额度</span>
+              </Menu.Item>
+            </Menu>
+          </Sider>
+          <Content>
             <div>
-              first commit test...
+              {React.cloneElement(this.props.children)}
             </div>
-          </Row>
-        </Col>
-      </Row>
+          </Content>
+        </Layout>
+      </Layout>
     );
   }
 }
