@@ -17,6 +17,10 @@ export default {
         if (match) {
           document.title = '严易贷-急速借款';
         }
+        else {
+          document.title = '暂无名字';
+        }
+
       });
     },
   },
