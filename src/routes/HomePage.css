@@ -1,0 +1,61 @@
+.logo {
+  width: 65px;
+  height: 38px;
+  background-image: url("../graphics/logo.png");
+  border-radius: 6px;
+  margin: 16px 16px 16px 0;
+  float: left;
+}
+
+.logo2 {
+  width: 58px;
+  height: 33px;
+  margin: 23px 16px 10px -5px;
+  background-image: url("../graphics/logo2.png");
+  float: left;
+}
+
+.mainContent {
+  background-image: url("../graphics/bg.jpg");
+}
+
+.login_and_register {
+  text-align: center;
+  margin: 12px 4px 16px 16px;
+  float: right;
+  font-size: 14px;
+}
+
+.login_and_register:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.buttonGroup {
+  text-align: center;
+  padding-top: 300px;
+  min-height: 50px;
+}
+
+.button{
+  margin: 0 20px;
+  color: #fff;
+  background-color: #108ee9;
+  border-color: #108ee9;
+  height: 40px;
+  padding: 0 18px;
+  letter-spacing: 1px;
+  border-radius: 8px;
+}
+
+.button:hover{
+  color: #fff;
+  background-color: #49A9EE;
+  border-color: #49A9EE;
+}
+
+.menu {
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 1px;
+}

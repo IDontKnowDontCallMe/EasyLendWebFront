@@ -5,12 +5,14 @@ import Products from './routes/Products';
 import MainMenuPage from './routes/MainMenuPage';
 import QuickLoanPage from './routes/QuickLoanPage';
 import NoContentPage from './routes/NoContentPage';
+import HomePage from './routes/HomePage';
 
 function RouterConfig({ history }) {
   return (
     <Router history={history}>
       <Route path="/" component={MainMenuPage} >
         <IndexRoute components={QuickLoanPage}/>
+        <Route path="/homepage" component={HomePage}/>
         <Route path="/quickLoan" component={QuickLoanPage} />
         <Route path="/bidLoan" component={NoContentPage} />
         <Route path="/myLoan" component={NoContentPage} />
