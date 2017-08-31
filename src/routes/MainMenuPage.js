@@ -2,6 +2,7 @@ import { Menu, Icon, Col, Row, Button, Layout } from 'antd';
 import React from 'react';
 import { Link } from 'dva/router';
 import QuickLoanPage from './QuickLoanPage';
+import styles from './MainMenuPage.css';
 
 const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -25,24 +26,23 @@ class MainMenuPage extends React.Component {
   render() {
     return (
       <Layout>
-        <Header>
-          <div style={{ float: 'left' }}>
-            这是logo
-          </div>
+        <Header className={styles.header}>
+          <div className={styles.logo}></div>
           <Menu
+            className={styles.headMenu}
             mode="horizontal"
           >
-            <SubMenu title={<span><Icon type="setting" />投资</span>}>
+            <SubMenu className={styles.headSubMenu} title={<span><Icon type="setting" />投资</span>}>
               <Menu.Item key="invest:1"><Link to="/investPlan" />投资计划</Menu.Item>
               <Menu.Item key="invest:2"><Link to="/bidInvest" />散标投资</Menu.Item>
               <Menu.Item key="invest:3"><Link to="/myInvest" />我的投资</Menu.Item>
             </SubMenu>
-            <SubMenu title={<span><Icon type="setting" />借款</span>}>
+            <SubMenu className={styles.headSubMenu} title={<span><Icon type="setting" />借款</span>}>
               <Menu.Item key="loan:1"><Link to="/quickLoan" />极速借款</Menu.Item>
               <Menu.Item key="loan:2"><Link to="/bidLoan" />散标借款</Menu.Item>
               <Menu.Item key="loan:3"><Link to="/myLoan" />我的借款</Menu.Item>
             </SubMenu>
-            <SubMenu title={<span><Icon type="setting" />还款</span>}>
+            <SubMenu className={styles.headSubMenu} title={<span><Icon type="setting" />还款</span>}>
               <Menu.Item key="refund:1"><Link to="/toRefund" />我要还款</Menu.Item>
             </SubMenu>
           </Menu>

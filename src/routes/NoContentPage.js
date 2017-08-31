@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
-import styles from './NoContentPage.less';
+import styles from './NoContentPage.css';
 
 const { Header, Content, Footer } = Layout;
 

@@ -164,13 +164,17 @@ const RegisterCreateForm = Form.create()(
 class HomePage extends React.Component {
 
   state = {
-    visible: false,
+    visible1: false,
+    visible1: false,
   };
-  showModal = () => {
-    this.setState({ visible: true });
+  showLoginModal = () => {
+    this.setState({ visible1: true });
+  }
+  showRegisterModal = () => {
+    this.setState({ visible2: true });
   }
   handleCancel = () => {
-    this.setState({ visible: false });
+    this.setState({ visible1: false, visible2: false });
   }
 
   // 登陆按钮监听
@@ -210,17 +214,17 @@ class HomePage extends React.Component {
           <Header style={{ background: 'transparent' }}>
             <div className={styles.logo}/>
             <div className={styles.logo2}/>
-            <div className={styles.login_and_register} onClick={this.showModal}>登陆</div>
+            <div className={styles.login_and_register} onClick={this.showLoginModal}>登陆</div>
             <LoginCreateForm
               ref={this.saveFormRef}
-              visible={this.state.visible}
+              visible={this.state.visible1}
               onCancel={this.handleCancel}
               onSubmit={this.handleLogin}
             />
-            <div className={styles.login_and_register} onClick={this.showModal}>注册</div>
+            <div className={styles.login_and_register} onClick={this.showRegisterModal}>注册</div>
             <RegisterCreateForm
               ref={this.saveFormRef}
-              visible={this.state.visible}
+              visible={this.state.visible2}
               onCancel={this.handleCancel}
               onSubmit={this.handleRegister}
             />

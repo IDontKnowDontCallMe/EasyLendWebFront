@@ -1,6 +1,5 @@
 {
   "entry": "src/index.js",
-  "theme": "./theme.js",
   "env": {
     "development": {
       "extraBabelPlugins": [
