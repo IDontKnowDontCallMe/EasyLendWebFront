@@ -13,12 +13,11 @@ export default {
   subscriptions: {
     setup({ dispatch, history }) {
       history.listen((location) => {
-        const match = pathToRegexp('/quickLoan').exec(location.pathname);
-        if (match) {
+        if (pathToRegexp('/quickLoan').exec(location.pathname)) {
           document.title = '严易贷-急速借款';
         }
-        else {
-          document.title = '暂无名字';
+        else if(pathToRegexp('/homepage').exec(location.pathname)) {
+          document.title = '严易贷-首页';
         }
 
       });

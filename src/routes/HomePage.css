@@ -16,7 +16,7 @@
 }
 
 .mainContent {
-  background-image: url("../graphics/bg.jpg");
+  background-image: url("../graphics/bg.png");
 }
 
 .login_and_register {
@@ -31,9 +31,14 @@
   cursor: pointer;
 }
 
+.forgetForm {
+  text-align: center;
+  float: right;
+}
+
 .buttonGroup {
   text-align: center;
-  padding-top: 300px;
+  padding-top: 310px;
   min-height: 50px;
 }
 
@@ -45,7 +50,7 @@
   height: 40px;
   padding: 0 18px;
   letter-spacing: 1px;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .button:hover{
@@ -59,3 +64,4 @@
   font-size: 14px;
   letter-spacing: 1px;
 }
+
