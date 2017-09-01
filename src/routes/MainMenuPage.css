@@ -1,33 +1,33 @@
-.logo {
-  width: 65px;
-  height: 38px;
-  background-image: url("../graphics/logo.png");
-  border-radius: 6px;
-  margin: 16px 16px 16px 0;
-  float: left;
-}
+/*.logo {*/
+  /*width: 65px;*/
+  /*height: 38px;*/
+  /*background-image: url("../graphics/logo.png");*/
+  /*border-radius: 6px;*/
+  /*margin: 16px 16px 16px 0;*/
+  /*float: left;*/
+/*}*/
 
-.header {
+/*.header {*/
 
-  background-color: #fff;
-  height: 80px;
+  /*background-color: #fff;*/
+  /*height: 80px;*/
 
-}
+/*}*/
 
 
-.headMenu {
+/*.headMenu {*/
 
-  position: relative;
-  left: 150px;
-  height: 80px;
-  background-color: #ffffff;
+  /*position: relative;*/
+  /*left: 150px;*/
+  /*height: 80px;*/
+  /*background-color: #ffffff;*/
 
-}
+/*}*/
 
-.headSubMenu {
+/*.headSubMenu {*/
 
-  background-color: #a53f30;
-  margin: 20px;
-  width: 100px;
-  height: 80px;
-}
+  /*background-color: #a53f30;*/
+  /*margin: 20px;*/
+  /*width: 100px;*/
+  /*height: 80px;*/
+/*}*/

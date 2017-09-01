@@ -70,10 +70,10 @@ class MainMenuPage extends React.Component {
               </Menu.Item>
             </Menu>
           </Sider>
-          <Content>
-            <div>
+          <Content style={{"backgroundColor": '#ffffff'}}>
+
               {React.cloneElement(this.props.children)}
-            </div>
+
           </Content>
         </Layout>
       </Layout>
