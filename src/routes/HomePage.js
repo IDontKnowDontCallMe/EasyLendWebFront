@@ -252,7 +252,7 @@ class HomePage extends React.Component {
           </Content>
 
           <Footer style={{ textAlign: 'center' }}>
-            Easy Lend ©2016 Created by NJU team
+            Easy Lend ©2017 Created by NJU team
           </Footer>
         </Layout>
     );

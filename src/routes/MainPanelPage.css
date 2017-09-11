@@ -1,8 +1,21 @@
 .logo {
-  width: 120px;
-  height: 31px;
-  background: #333;
+  width: 65px;
+  height: 38px;
+  background-image: url("../graphics/logo.png");
   border-radius: 6px;
-  margin: 16px 28px 16px 0;
+  margin: 16px 16px 16px 0;
   float: left;
+}
+
+.logo2 {
+  width: 58px;
+  height: 33px;
+  margin: 23px 16px 10px -5px;
+  background-image: url("../graphics/logo2.png");
+  float: left;
+}
+
+.footerWords {
+  text-align: center;
+  color: #ffffff;
 }
