@@ -1,18 +1,17 @@
 import React from 'react';
 import { Router, Route, IndexRoute } from 'dva/router';
-import IndexPage from './routes/IndexPage';
-import Products from './routes/Products';
 import MainMenuPage from './routes/MainMenuPage';
 import QuickLoanPage from './routes/QuickLoanPage';
 import NoContentPage from './routes/NoContentPage';
 import HomePage from './routes/HomePage';
+import MainPanelPage from './routes/MainPanelPage';
 import AuthenticationPage from './routes/AuthenticationPage';
 
 function RouterConfig({ history }) {
   return (
     <Router history={history}>
       <Route path="/homepage" component={HomePage}/>
-      <Route path="/" component={MainMenuPage} >
+      <Route path="/" component={MainPanelPage} >
         <IndexRoute components={QuickLoanPage}/>
         <Route path="/quickLoan" component={QuickLoanPage} />
         <Route path="/bidLoan" component={NoContentPage} />
