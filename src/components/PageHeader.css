@@ -1,0 +1,13 @@
+.header-text
+{
+  background-color: #ffffff;
+  font-family:"微软雅黑","黑体","宋体";
+  font-size:36px;
+}
+
+.div-size
+{
+  position: relative;
+  left: 30px;
+  top: 0px;
+}
