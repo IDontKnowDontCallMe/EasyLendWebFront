@@ -6,6 +6,7 @@ import MainMenuPage from './routes/MainMenuPage';
 import QuickLoanPage from './routes/QuickLoanPage';
 import NoContentPage from './routes/NoContentPage';
 import HomePage from './routes/HomePage';
+import AuthenticationPage from './routes/AuthenticationPage';
 
 function RouterConfig({ history }) {
   return (
@@ -20,6 +21,7 @@ function RouterConfig({ history }) {
         <Route path="/bidInvest" component={NoContentPage} />
         <Route path="/myInvest" component={NoContentPage} />
         <Route path="/toRefund" component={NoContentPage} />
+        <Route path="/authentication" component={AuthenticationPage} />
       </Route>
     </Router>
   );
