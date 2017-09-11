@@ -48,7 +48,7 @@ export async function getCheckState(param){
   return {
     code: 0,
     message: 'getCheckState success',
-    checkState: 1,
+    checkState: 0,
   }
 
 }

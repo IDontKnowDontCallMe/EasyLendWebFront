@@ -18,6 +18,7 @@ const app = dva({
 app.model(require('./models/products'));
 app.model(require('./models/loginUser'));
 app.model(require('./models/AuthenticationPageState'));
+app.model(require('./models/UserBidListInfo'));
 
 // 4. Router
 app.router(require('./router'));
