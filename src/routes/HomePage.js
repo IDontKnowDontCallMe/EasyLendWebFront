@@ -165,17 +165,19 @@ class HomePage extends React.Component {
 
   state = {
     visible1: false,
-    visible1: false,
+    visible2: false,
   };
   showLoginModal = () => {
     this.setState({ visible1: true });
-  }
+  };
   showRegisterModal = () => {
     this.setState({ visible2: true });
-  }
+  };
   handleCancel = () => {
     this.setState({ visible1: false, visible2: false });
-  }
+    const form = this.form;
+    form.resetFields();
+  };
 
   // 登陆按钮监听
   handleLogin = () => {
@@ -188,11 +190,11 @@ class HomePage extends React.Component {
       form.resetFields();
       this.setState({ visible: false });
     });
-  }
+  };
 
   saveFormRef = (form) => {
     this.form = form;
-  }
+  };
 
   // 注册按钮监听
   handleRegister = () => {
@@ -205,7 +207,7 @@ class HomePage extends React.Component {
       form.resetFields();
       this.setState({ visible: false });
     });
-  }
+  };
 
 
   render() {
