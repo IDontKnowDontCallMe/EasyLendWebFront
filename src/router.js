@@ -27,7 +27,7 @@ function RouterConfig({ history }) {
         <Route path="/auth/xuexinAuth" component={XueXinWangAuthPage} />
         <Route path="/auth/basicAuth" component={BasicAuthPage} />
       </Route>
-      <Route  path="/test" component={BasicAuthPage} />
+      <Route  path="/test" component={NoContentPage} />
     </Router >
   );
 }
