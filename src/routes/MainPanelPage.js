@@ -36,12 +36,14 @@ class MainPanelPage extends React.Component {
                   <Menu.Item key="5"><Link to="/auth/xuexinAuth" />学信网认证</Menu.Item>
                   <Menu.Item key="6"><Link to="/auth/zhimaAuth" />芝麻信用认证</Menu.Item>
                 </SubMenu>
-                <SubMenu key="sub2" title={<span><Icon type="laptop" />信用评估报告</span>}>
+                <SubMenu key="sub2" title={<span><Icon type="solution" />信用评估报告</span>}>
+                  <Menu.Item key="7"><Link to="/auth/creditReport"/>数据记录</Menu.Item>
+                  <Menu.Item key="8">数据分析</Menu.Item>
                 </SubMenu>
-                <SubMenu key="sub3" title={<span><Icon type="notification" />投资与借款</span>}>
-                  <Menu.Item key="7">投资</Menu.Item>
-                  <Menu.Item key="8">借款</Menu.Item>
-                  <Menu.Item key="9">还款</Menu.Item>
+                <SubMenu key="sub3" title={<span><Icon type="wallet" />投资与借款</span>}>
+                  <Menu.Item key="9">投资</Menu.Item>
+                  <Menu.Item key="10">借款</Menu.Item>
+                  <Menu.Item key="11">还款</Menu.Item>
                 </SubMenu>
               </Menu>
             </Sider>
