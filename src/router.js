@@ -17,6 +17,8 @@ import XueXinWangAuthPage from './routes/XueXinWangAuthPage';
 function RouterConfig({ history }) {
   return (
     <Router history={history}>
+      <IndexRoute components={HomePage}/>
+      <Route path="/" component={HomePage}/>
       <Route path="/homepage" component={HomePage}/>
       <Route path="/auth" component={MainPanelPage} >
         <IndexRoute components={BasicAuthPage}/>

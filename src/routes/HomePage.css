@@ -17,6 +17,7 @@
 
 .mainContent {
   background-image: url("../graphics/bg.png");
+  background-size: 100%;
 }
 
 .login_and_register {
