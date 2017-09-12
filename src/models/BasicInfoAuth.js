@@ -1,5 +1,6 @@
 import pathToRegexp from 'path-to-regexp';
 import {message} from 'antd';
+import {basicAuth, getAuthState} from '../services/AuthService';
 
 export default {
 
@@ -15,23 +16,35 @@ export default {
 
   subscriptions: {
 
+    setup({ dispatch, history }) {
+      history.listen((location) => {
+        const match = pathToRegexp('/auth/basicAuth').exec(location.pathname);
+        if (match) {
+          dispatch({
+            type:'queryAuthState',
+          });
+        }
+
+      });
+    },
 
   },
 
   effects: {
 
-    *queryCheckState({ payload }, { call, put, select }){
+    *queryAuthState({payload},{call, put, select}){
 
-      const data = yield call(getCheckState, {});
+      const userId = yield select(state => state.loginUser.userId);
 
-      if(data){
-        if(data.checkState){
-          yield put({
-            type:'updateCheckStep',
-            payload: {
-              checkState: data.checkState,
-            }
-          })
+      const data = yield call(getAuthState, {userId: userId});
+
+      if(data.code===0){
+        if(data.message==='success'){
+          if(data.hasBasicAuth){
+            yield put({
+              type:'authCompleted',
+            });
+          }
         }
       }
 
@@ -39,9 +52,34 @@ export default {
 
 
 
+    *doBasicAuth({ payload }, { call, put, select }){
+
+      const data = yield call(basicAuth, payload);
+
+      if(data.code===0){
+        if(data.message === 'success'){
+          yield put({
+            type:'authCompleted'
+          });
+        }
+      }
+
+    }
+
+
+
   },
 
   reducers: {
+
+    authCompleted(state, action){
+
+      return {
+        ...state,
+        hasAuth:true,
+      }
+
+    },
 
     updateIdentityCardPhoto(state, action){
 

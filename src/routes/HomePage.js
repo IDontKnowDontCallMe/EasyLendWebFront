@@ -148,6 +148,21 @@ const RegisterCreateForm = Form.create()(
             })(
               <Input />
             )}
+            <Button >获取验证码</Button>
+          </FormItem>
+
+          <FormItem
+            {...formItemLayout}
+            label="验证码"
+            hasFeedback
+          >
+            {getFieldDecorator('verifiedCode', {
+              rules: [{
+                required: true, message: '请输入手机验证码',
+              }],
+            })(
+              <Input />
+            )}
           </FormItem>
 
           <FormItem

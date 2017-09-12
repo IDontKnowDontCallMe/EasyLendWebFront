@@ -3,6 +3,7 @@ import { routerRedux } from 'dva/router';
 
 export default {
   namespace: 'loginUser',
+
   state: {
     userId: 0,
     userName: '张三',

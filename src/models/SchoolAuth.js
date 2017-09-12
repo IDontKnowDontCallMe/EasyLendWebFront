@@ -1,10 +1,10 @@
 import pathToRegexp from 'path-to-regexp';
 import {message} from 'antd';
-import {ZhiMaAuth, getAuthState} from '../services/AuthService';
+import {schoolAuth, getAuthState} from '../services/AuthService';
 
 export default {
 
-  namespace: 'ZhiMaAuth',
+  namespace: 'schoolAuth',
   state:{
     hasAuth: false,
   },
@@ -13,7 +13,7 @@ export default {
 
     setup({ dispatch, history }) {
       history.listen((location) => {
-        const match = pathToRegexp('/auth/zhimaAuth').exec(location.pathname);
+        const match = pathToRegexp('/auth/schoolAuth').exec(location.pathname);
         if (match) {
           dispatch({
             type:'queryAuthState',
@@ -35,7 +35,7 @@ export default {
 
       if(data.code===0){
         if(data.message==='success'){
-          if(data.hasZhiMaAuth){
+          if(data.hasSchoolAuth){
             yield put({
               type:'authCompleted',
             });
@@ -47,9 +47,9 @@ export default {
 
 
 
-    *doZhimaAuth({ payload }, { call, put, select }){
+    *doSchoolAuth({ payload }, { call, put, select }){
 
-      const data = yield call(ZhiMaAuth, payload);
+      const data = yield call(schoolAuth, payload);
 
       if(data.code===0){
         if(data.message === 'success'){

@@ -1,10 +1,10 @@
 import pathToRegexp from 'path-to-regexp';
 import {message} from 'antd';
-import {ZhiMaAuth, getAuthState} from '../services/AuthService';
+import {XueXinAuth, getAuthState} from '../services/AuthService';
 
 export default {
 
-  namespace: 'ZhiMaAuth',
+  namespace: 'XueXinAuth',
   state:{
     hasAuth: false,
   },
@@ -13,7 +13,7 @@ export default {
 
     setup({ dispatch, history }) {
       history.listen((location) => {
-        const match = pathToRegexp('/auth/zhimaAuth').exec(location.pathname);
+        const match = pathToRegexp('/auth/xuexinAuth').exec(location.pathname);
         if (match) {
           dispatch({
             type:'queryAuthState',
@@ -35,7 +35,7 @@ export default {
 
       if(data.code===0){
         if(data.message==='success'){
-          if(data.hasZhiMaAuth){
+          if(data.hasXueXinAuth){
             yield put({
               type:'authCompleted',
             });
@@ -47,9 +47,9 @@ export default {
 
 
 
-    *doZhimaAuth({ payload }, { call, put, select }){
+    *doXueXinAuth({ payload }, { call, put, select }){
 
-      const data = yield call(ZhiMaAuth, payload);
+      const data = yield call(XueXinAuth, payload);
 
       if(data.code===0){
         if(data.message === 'success'){
