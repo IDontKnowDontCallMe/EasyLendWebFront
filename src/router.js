@@ -1,26 +1,19 @@
 import React from 'react';
 import { Router, Route, IndexRoute } from 'dva/router';
-import MainMenuPage from './routes/MainMenuPage';
-import QuickLoanPage from './routes/QuickLoanPage';
-import NoContentPage from './routes/NoContentPage';
 import HomePage from './routes/HomePage';
 import MainPanelPage from './routes/MainPanelPage';
-import AuthenticationPage from './routes/AuthenticationPage';
-
 import BasicAuthPage from './routes/BasicInfoAuthPage';
 import IncomeAuthPage from './routes/IncomeAuthPage';
 import ZhiMaCreditAuthPage from './routes/ZhiMaCreditAuthPage';
 import SchoolAuthPage from './routes/SchoolAuthPage';
 import ICBCCardAuthPage from './routes/ICBCCardAuthPage';
 import XueXinWangAuthPage from './routes/XueXinWangAuthPage';
-
 import CreditReportPage from './routes/CreaditReportPage';
+import CreditChartsPage from './routes/CreditChartsPage';
 
 function RouterConfig({ history }) {
   return (
     <Router history={history}>
-      <IndexRoute components={HomePage}/>
-      <Route path="/" component={HomePage}/>
       <Route path="/homepage" component={HomePage}/>
       <Route path="/auth" component={MainPanelPage} >
         <IndexRoute components={BasicAuthPage}/>
@@ -30,9 +23,11 @@ function RouterConfig({ history }) {
         <Route path="/auth/icbcAuth" component={ICBCCardAuthPage} />
         <Route path="/auth/xuexinAuth" component={XueXinWangAuthPage} />
         <Route path="/auth/basicAuth" component={BasicAuthPage} />
+        <Route path="/auth/creditReport" component={CreditReportPage}/>
+        <Route path="/auth/creditCharts" component={CreditChartsPage}/>
       </Route>
-      <Route  path="/test" component={CreditReportPage} />
-    </Router >
+      <Route  path="/test" component={BasicAuthPage} />
+    </Router>
   );
 }
 

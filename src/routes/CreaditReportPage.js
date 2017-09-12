@@ -195,7 +195,7 @@ class CreaditReportPage extends React.Component {
   render() {
     return (
       <div>
-        <PageHeader headerName="信用评估报告"/>
+        <PageHeader headerName="数据记录"/>
         <div className={styles.table}>
           <Table
             columns={basicData_columns}
@@ -230,7 +230,7 @@ class CreaditReportPage extends React.Component {
             columns={volunteer_columns}
             dataSource={volunteer_data}
             bordered
-            title={() => '报告奖学金获奖记录'}
+            title={() => '报告志愿活动记录'}
             showSizeChanger={true}
             defaultPageSize={5}
             pageSize={5}
