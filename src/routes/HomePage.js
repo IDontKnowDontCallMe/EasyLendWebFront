@@ -5,33 +5,45 @@
 import { Layout, Menu, Breadcrumb, Button, Dropdown, Icon, Modal, Form, Input, Checkbox, Row, Col, Tooltip } from 'antd';
 import React from 'react';
 import styles from './HomePage.css';
+import { Link } from 'dva/router';
 const { Header, Content, Footer } = Layout;
 
-function handleMenuClick(e) {
-  console.log('click', e);
-}
 
 /**
- * 投资按钮选择列表
+ * 信息认证选择列表
  * @type {XML}
  */
-const menu_investment = (
-  <Menu onClick={handleMenuClick} className={styles.menu}>
-    <Menu.Item key="1">投资计划</Menu.Item>
-    <Menu.Item key="2">散标投资</Menu.Item>
-    <Menu.Item key="3">我的投资</Menu.Item>
+const menu_confirmInfo = (
+  <Menu className={styles.menu}>
+    <Menu.Item key="1"><Link to="/auth/basicAuth" />基本信息认证</Menu.Item>
+    <Menu.Item key="2"><Link to="/auth/incomeAuth" />经济水平录入</Menu.Item>
+    <Menu.Item key="3"><Link to="/auth/icbcAuth" />工行账户绑定</Menu.Item>
+    <Menu.Item key="4"><Link to="/auth/schoolAuth" />学校教务网认证</Menu.Item>
+    <Menu.Item key="5"><Link to="/auth/xuexinAuth" />学信网认证</Menu.Item>
+    <Menu.Item key="6"><Link to="/auth/zhimaAuth" />芝麻信用认证</Menu.Item>
   </Menu>
 );
 
 /**
- * 贷款按钮选中列表
+ * 信用评估报告选择列表
+ * @type {XML}
+ */
+const menu_creditReport = (
+  <Menu className={styles.menu}>
+    <Menu.Item key="7"><Link to="/auth/creditReport"/>数据记录</Menu.Item>
+    <Menu.Item key="8">数据分析</Menu.Item>
+  </Menu>
+);
+
+/**
+ * 投资与借款选择列表
  * @type {XML}
  */
 const menu_renting = (
-  <Menu onClick={handleMenuClick} className={styles.menu}>
-    <Menu.Item key="1">极速借款</Menu.Item>
-    <Menu.Item key="2">散标借款</Menu.Item>
-    <Menu.Item key="3">我的借款</Menu.Item>
+  <Menu className={styles.menu}>
+    <Menu.Item key="9">投资</Menu.Item>
+    <Menu.Item key="10">借款</Menu.Item>
+    <Menu.Item key="11">还款</Menu.Item>
   </Menu>
 );
 
@@ -230,23 +242,26 @@ class HomePage extends React.Component {
               onCancel={this.handleCancel}
               onSubmit={this.handleRegister}
             />
-            <div className={styles.login_and_register}>下载app</div>
           </Header>
 
           <Content style={{ padding: '13px 50px 0px 50px' }}>
             <div className={styles.mainContent} style={{ padding: 24, minHeight: 515 }}>
               <div className={styles.buttonGroup}>
-                <Dropdown overlay={menu_investment}>
+                <Dropdown overlay={menu_confirmInfo}>
                   <Button className={styles.button} size='large'>
-                    投资 <Icon type="down" />
+                    信息认证 <Icon type="down" />
+                  </Button>
+                </Dropdown>
+                <Dropdown overlay={menu_creditReport}>
+                  <Button className={styles.button} size='large'>
+                    信用评估报告 <Icon type="down" />
                   </Button>
                 </Dropdown>
                 <Dropdown overlay={menu_renting}>
                   <Button className={styles.button} size='large'>
-                    借款 <Icon type="down" />
+                    投资与借款 <Icon type="down" />
                   </Button>
                 </Dropdown>
-                <Button className={styles.button} size='large'>还款</Button>
               </div>
             </div>
           </Content>
