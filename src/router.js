@@ -9,6 +9,7 @@ import SchoolAuthPage from './routes/SchoolAuthPage';
 import ICBCCardAuthPage from './routes/ICBCCardAuthPage';
 import XueXinWangAuthPage from './routes/XueXinWangAuthPage';
 import CreditReportPage from './routes/CreaditReportPage';
+import CreditChartsPage from './routes/CreditChartsPage';
 
 function RouterConfig({ history }) {
   return (
@@ -23,6 +24,7 @@ function RouterConfig({ history }) {
         <Route path="/auth/xuexinAuth" component={XueXinWangAuthPage} />
         <Route path="/auth/basicAuth" component={BasicAuthPage} />
         <Route path="/auth/creditReport" component={CreditReportPage}/>
+        <Route path="/auth/creditCharts" component={CreditChartsPage}/>
       </Route>
       <Route  path="/test" component={BasicAuthPage} />
     </Router>
