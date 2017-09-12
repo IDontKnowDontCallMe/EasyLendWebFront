@@ -14,6 +14,7 @@ import CreditChartsPage from './routes/CreditChartsPage';
 function RouterConfig({ history }) {
   return (
     <Router history={history}>
+      <Route path="/" component={HomePage}/>
       <Route path="/homepage" component={HomePage}/>
       <Route path="/auth" component={MainPanelPage} >
         <IndexRoute components={BasicAuthPage}/>
@@ -26,7 +27,7 @@ function RouterConfig({ history }) {
         <Route path="/auth/creditReport" component={CreditReportPage}/>
         <Route path="/auth/creditCharts" component={CreditChartsPage}/>
       </Route>
-      <Route  path="/test" component={BasicAuthPage} />
+      <Route  path="/test" component={CreditChartsPage} />
     </Router>
   );
 }
