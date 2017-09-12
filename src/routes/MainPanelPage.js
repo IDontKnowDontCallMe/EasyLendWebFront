@@ -5,6 +5,8 @@
 import React from 'react';
 import styles from './MainPanelPage.css';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Link } from 'dva/router';
+
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -27,12 +29,12 @@ class MainPanelPage extends React.Component {
                 style={{ height: '100%' }}
               >
                 <SubMenu key="sub1" title={<span><Icon type="user" />信息认证</span>}>
-                  <Menu.Item key="1">基本信息认证</Menu.Item>
-                  <Menu.Item key="2">经济水平录入</Menu.Item>
-                  <Menu.Item key="3">工行账户绑定</Menu.Item>
-                  <Menu.Item key="4">学校教务网认证</Menu.Item>
-                  <Menu.Item key="5">学信网认证</Menu.Item>
-                  <Menu.Item key="6">芝麻信用认证</Menu.Item>
+                  <Menu.Item key="1"><Link to="/auth/basicAuth" />基本信息认证</Menu.Item>
+                  <Menu.Item key="2"><Link to="/auth/incomeAuth" />经济水平录入</Menu.Item>
+                  <Menu.Item key="3"><Link to="/auth/icbcAuth" />工行账户绑定</Menu.Item>
+                  <Menu.Item key="4"><Link to="/auth/schoolAuth" />学校教务网认证</Menu.Item>
+                  <Menu.Item key="5"><Link to="/auth/xuexinAuth" />学信网认证</Menu.Item>
+                  <Menu.Item key="6"><Link to="/auth/zhimaAuth" />芝麻信用认证</Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub2" title={<span><Icon type="laptop" />信用评估报告</span>}>
                 </SubMenu>
@@ -44,7 +46,7 @@ class MainPanelPage extends React.Component {
               </Menu>
             </Sider>
             <Content style={{ padding: '0 24px', minHeight: 418 }}>
-              Content
+              {React.cloneElement(this.props.children)}
             </Content>
           </Layout>
         </Content>

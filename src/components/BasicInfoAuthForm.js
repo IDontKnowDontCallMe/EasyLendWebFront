@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Input, Button, Upload, Icon  } from 'antd';
+import styles from './BasicInfoAuthForm.css';
 
 const FormItem = Form.Item;
 
@@ -12,24 +13,50 @@ function getBase64(img, callback) {
 
 /*
 created at 2017.9.11 b SJL
+
+param{
+
+  basicInfoAuth,
+
+  updateIdentityCardPhoto()
+
+}
+
  */
 class BasicInfoAuthForm extends React.Component{
 
   constructor(props){
-
     super(props);
-
-
   }
 
-  handleChange = (info) => {
+
+
+  beforeUploadIdentityCardPhoto = (file) => {
 
     const fileReader = new FileReader();
 
+    fileReader.onload = () => {
 
+      this.props.updateIdentityCardPhoto({file:file, url:fileReader.result});
+
+    };
+
+    fileReader.readAsDataURL(file);
+
+    return false;
   }
 
-  beforeUpload = (file) => {
+  beforeUploadFacePhoto = (file) => {
+
+    const fileReader = new FileReader();
+
+    fileReader.onload = () => {
+
+      this.props.updateFacePhoto({file:file, url:fileReader.result});
+
+    };
+
+    fileReader.readAsDataURL(file);
 
     return false;
   }
@@ -40,7 +67,6 @@ class BasicInfoAuthForm extends React.Component{
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-
 
         console.log(values);
 
@@ -69,11 +95,17 @@ class BasicInfoAuthForm extends React.Component{
             {getFieldDecorator('identityCardFront', {
               valuePropName: 'file',
             })(
-              <Upload name="avatar" action="/upload.do" beforeUpload={this.beforeUpload} onChange={this.handleChange} >
+              <Upload
+                name="avatar"
+                action="/upload"
+                beforeUpload={this.beforeUploadIdentityCardPhoto}
+                showUploadList={false}
+                className={styles['avatar-uploader']}
+              >
                 {
-                  this.state.imageUrl ?
-                    <img src={imageUrl} alt="" className="avatar" /> :
-                    <Icon type="plus" className="avatar-uploader-trigger" />
+                  this.props.basicInfoAuth.identityCardPhotoUrl ?
+                  <img src={this.props.basicInfoAuth.identityCardPhotoUrl} className={styles['avatar']}/>  :
+                  <Icon type="plus" className={styles['avatar-uploader-trigger']} />
                 }
               </Upload>
             )}
@@ -81,29 +113,27 @@ class BasicInfoAuthForm extends React.Component{
 
           <FormItem
             {...formItemLayout}
-            label="身份证背面照"
+            label="正脸照"
           >
             {getFieldDecorator('identityCardBack', {
               valuePropName: 'file',
             })(
-              <Upload name="avatar" action="/upload.do" >
-                <Icon type="plus" className="avatar-uploader-trigger" />
+              <Upload
+                name="avatar"
+                action="/upload"
+                beforeUpload={this.beforeUploadFacePhoto}
+                showUploadList={false}
+                className={styles['avatar-uploader']}
+              >
+                {
+                  this.props.basicInfoAuth.facePhotoUrl ?
+                    <img src={this.props.basicInfoAuth.facePhotoUrl} className={styles['avatar']} />  :
+                    <Icon type="plus" className={styles['avatar-uploader-trigger']} />
+                }
               </Upload>
             )}
           </FormItem>
 
-          <FormItem
-            {...formItemLayout}
-            label="人脸照片"
-          >
-            {getFieldDecorator('faceImage', {
-              valuePropName: 'file',
-            })(
-              <Upload name="avatar" action="/upload.do" >
-                <Icon type="plus" className="avatar-uploader-trigger" />
-              </Upload>
-            )}
-          </FormItem>
 
           <FormItem
             {...formItemLayout}
