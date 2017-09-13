@@ -6,6 +6,12 @@ import { Layout, Menu, Breadcrumb, Button, Dropdown, Icon, Modal, Form, Input, C
 import React from 'react';
 import styles from './HomePage.css';
 import { Link, withRouter  } from 'dva/router';
+import {connect} from 'dva'
+
+import LoginForm from '../components/LoginForm';
+import RegisterForm from '../components/RegisterForm';
+
+
 const { Header, Content, Footer } = Layout;
 
 
@@ -190,33 +196,46 @@ const RegisterCreateForm = Form.create()(
  */
 class HomePage extends React.Component {
 
-  state = {
-    visible1: false,
-    visible2: false,
-  };
+
+
   showLoginModal = () => {
-    this.setState({ visible1: true });
+    this.props.dispatch({
+      type: 'loginUser/showLoginForm',
+    });
   };
+
   showRegisterModal = () => {
-    this.setState({ visible2: true });
+    this.props.dispatch({
+      type: 'loginUser/showRegisterForm',
+    });
   };
+
   handleCancel = () => {
-    this.setState({ visible1: false, visible2: false });
+    this.props.dispatch({
+      type: 'loginUser/closeRegisterForm',
+    });
+
+    this.props.dispatch({
+      type: 'loginUser/closeLoginForm',
+    });
+
     const form = this.form;
     form.resetFields();
   };
 
   // 登陆按钮监听
   handleLogin = () => {
-    const form = this.form;
+    const form = this.refs.loginForm;
     form.validateFields((err, values) => {
       if (err) {
         return;
       }
-      console.log('Received values of form: ', values);
+      console.log('Received values of login form: ', values);
       form.resetFields();
-      this.setState({ visible: false });
+
     });
+
+
   };
 
   saveFormRef = (form) => {
@@ -225,15 +244,17 @@ class HomePage extends React.Component {
 
   // 注册按钮监听
   handleRegister = () => {
-    const form = this.form;
+    const form = this.refs.registerForm;
     form.validateFields((err, values) => {
       if (err) {
         return;
       }
-      console.log('Received values of form: ', values);
+      console.log('Received values of register form: ', values);
       form.resetFields();
-      this.setState({ visible: false });
+
     });
+
+
   };
 
 
@@ -244,16 +265,17 @@ class HomePage extends React.Component {
             <div className={styles.logo}/>
             <div className={styles.logo2}/>
             <div className={styles.login_and_register} onClick={this.showLoginModal}>登陆</div>
+            <div className={styles.login_and_register} onClick={this.showRegisterModal}>注册</div>
+
             <LoginCreateForm
-              ref={this.saveFormRef}
-              visible={this.state.visible1}
+              ref='loginForm'
+              visible={this.props.loginUser.showLoginForm}
               onCancel={this.handleCancel}
               onSubmit={this.handleLogin}
             />
-            <div className={styles.login_and_register} onClick={this.showRegisterModal}>注册</div>
             <RegisterCreateForm
-              ref={this.saveFormRef}
-              visible={this.state.visible2}
+              ref='registerForm'
+              visible={this.props.loginUser.showRegisterForm}
               onCancel={this.handleCancel}
               onSubmit={this.handleRegister}
             />
@@ -289,5 +311,10 @@ class HomePage extends React.Component {
   }
 }
 
+function mapStateToProps({ loginUser }) {
+  return {
+    loginUser,
+  };
+}
 
-export default HomePage;
+export default connect(mapStateToProps)(HomePage);

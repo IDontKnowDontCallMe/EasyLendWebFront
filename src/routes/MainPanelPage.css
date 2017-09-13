@@ -19,3 +19,15 @@
   text-align: center;
   color: #ffffff;
 }
+
+.login_and_register {
+  text-align: center;
+  margin: 12px 4px 16px 16px;
+  float: right;
+  font-size: 14px;
+}
+
+.login_and_register:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

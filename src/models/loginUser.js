@@ -5,11 +5,16 @@ export default {
   namespace: 'loginUser',
 
   state: {
-    userId: 0,
+    userId: -1,
     userName: '张三',
     surplusLoan: 2000,
     startRate: 3.5,
     endRate: 5.6,
+
+    showLoginForm: false,
+    showRegisterForm: false,
+
+
   },
 
   subscriptions: {
@@ -24,6 +29,48 @@ export default {
 
       });
     },
+  },
+
+
+  reducers:{
+
+    showLoginForm(state, action){
+
+      return {
+        ...state,
+        showLoginForm: true,
+      }
+
+    },
+
+    showRegisterForm(state, action){
+
+      return {
+        ...state,
+        showRegisterForm: true,
+      }
+
+    },
+
+    closeLoginForm(state, action){
+
+      return {
+        ...state,
+        showLoginForm: false,
+      }
+
+    },
+
+    closeRegisterForm(state, action){
+
+      return {
+        ...state,
+        showRegisterForm: false,
+      }
+
+    },
+
+
   },
 
 };
