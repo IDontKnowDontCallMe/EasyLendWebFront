@@ -18,6 +18,11 @@ class MainPanelPage extends React.Component {
         <Header className="header" style={{ background: '#fff', height: 80 }}>
           <div className={styles.logo}/>
           <div className={styles.logo2}/>
+
+          <div className={styles.login_and_register}>登陆</div>
+          <div className={styles.login_and_register}>注册</div>
+
+
         </Header>
         <Content style={{ padding: '25px 50px 25px 50px', background: '#F0F2F5' }}>
           <Layout style={{ padding: '24px 0', background: '#fff' }}>
