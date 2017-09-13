@@ -10,19 +10,12 @@ const option = {
   backgroundColor: "#ffffff",
   color: ['#2EC7C9'],
 
-  title: [{
-    text: '组合图',
-    left: '40%',
-    top: '6%',
-    textStyle: {
-      color: '#000000'
-    }
-  }],
-  tooltip: {},
+  tooltip: {
+    formatter: "{b} : {c}次"
+  },
   legend: {
-    x: '30%',
-    bottom: '1%',
-    data: ['郑州']
+    left: '13%',
+    data: ['大学生消费区间']
   },
   grid: {
     left: '10%',
@@ -44,16 +37,17 @@ const option = {
         color: '#c0576d'
       }
     },
-    "axisTick": {
-      "show": false
+    axisTick: {
+      alignWithLabel: true,
     },
     axisLabel: {
       textStyle: {
-        color: '#000000'
-      }
+        color: '#000000',
+        interval: 0  // 设置成0强制显示所有标签
+      },
     },
     boundaryGap: true, //false时X轴从0开始
-    data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+    data: ['0~200元', '200~400元', '400~600元', '600~800元', '800~1000元', '1000元以上']
   },
   yAxis: {
     "axisLine": {
@@ -67,23 +61,24 @@ const option = {
         color: '#c0576d'
       }
     },
-    "axisTick": {
-      "show": false
+    axisTick: {
+      alignWithLabel: true
     },
     axisLabel: {
       textStyle: {
         color: '#000000'
-      }
+      },
+      formatter: '{value}次'
     },
     type: 'value'
   },
   series: [{
-    name: '郑州',
+    name: '大学生消费区间',
     smooth: true,
     type: 'bar',
     symbolSize: 8,
     //symbol: 'circle',
-    data: [90, 50, 39, 50, 120, 82, 80]
+    data: [4, 3, 2, 1, 2, 1]
   }, {
     type: 'pie',
     center: ['83%', '50%'],
@@ -91,46 +86,54 @@ const option = {
     name: '饼图',
     tooltip: {
       trigger: 'item',
-      formatter: "{a} <br/>{b} : {c} ({d}%)"
+      formatter: "{b} : {c}次 ({d}%)"
     },
     data: [{
-      value: 335,
-      name: '直接访问',
+      value: 4,
+      name: '0~200元',
       itemStyle: {
         normal: {
           color: '#eedd78'
         }
       }
     }, {
-      value: 310,
-      name: '邮件营销',
+      value: 3,
+      name: '200~400元',
       itemStyle: {
         normal: {
           color: '#dd6b66'
         }
       }
     }, {
-      value: 234,
-      name: '联盟广告',
+      value: 4,
+      name: '400~600元',
       itemStyle: {
         normal: {
           color: '#73b9bc'
         }
       }
     }, {
-      value: 135,
-      name: '视频广告',
+      value: 1,
+      name: '600~800元',
       itemStyle: {
         normal: {
           color: '#e69d87'
         }
       }
     }, {
-      value: 1548,
-      name: '搜索引擎',
+      value: 2,
+      name: '800~1000元',
       itemStyle: {
         normal: {
           color: '#8dc1a9'
+        }
+      }
+    }, {
+      value: 1,
+      name: '1000元以上',
+      itemStyle: {
+        normal: {
+          color: '#c0576d'
         }
       }
     }]
@@ -142,13 +145,11 @@ class CreditChartsPage extends React.Component {
   foo = () => {
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('cost_chart'));
-
     // 绘制图表
     myChart.setOption(option);
   }
 
   render() {
-
     return (
       <div>
         <PageHeader headerName="数据分析"/>

@@ -34,8 +34,8 @@ const menu_confirmInfo = (
  */
 const menu_creditReport = (
   <Menu className={styles.menu}>
-    <Menu.Item key="7"><Link to="/auth/creditReport"/>数据记录</Menu.Item>
-    <Menu.Item key="8">数据分析</Menu.Item>
+    <Menu.Item key="7"><Link to="/auth/creditReport">数据记录</Link></Menu.Item>
+    <Menu.Item key="8"><Link to="/auth/creditCharts">数据分析</Link></Menu.Item>
   </Menu>
 );
 
@@ -45,7 +45,7 @@ const menu_creditReport = (
  */
 const menu_renting = (
   <Menu className={styles.menu}>
-    <Menu.Item key="9">投资</Menu.Item>
+    <Menu.Item key="9"><Link to="/auth/investment">投资</Link></Menu.Item>
     <Menu.Item key="10">借款</Menu.Item>
     <Menu.Item key="11">还款</Menu.Item>
   </Menu>

@@ -10,6 +10,7 @@ import ICBCCardAuthPage from './routes/ICBCCardAuthPage';
 import XueXinWangAuthPage from './routes/XueXinWangAuthPage';
 import CreditReportPage from './routes/CreaditReportPage';
 import CreditChartsPage from './routes/CreditChartsPage';
+import InvestPage from './routes/InvestPage';
 import NoContentPage from "./routes/NoContentPage";
 
 function RouterConfig({ history }) {
@@ -27,6 +28,7 @@ function RouterConfig({ history }) {
         <Route path="/auth/basicAuth" component={BasicAuthPage} />
         <Route path="/auth/creditReport" component={CreditReportPage}/>
         <Route path="/auth/creditCharts" component={CreditChartsPage}/>
+        <Route path="/auth/investment" component={InvestPage}/>
       </Route>
       <Route  path="/test" component={NoContentPage} />
     </Router>
