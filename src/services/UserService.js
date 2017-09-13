@@ -5,7 +5,7 @@
 
 /*
   param{
-    phone: string
+    userPhone: string
   }
  */
 export async function sendPhoneVerifiedCode(param) {
@@ -23,7 +23,7 @@ export async function sendPhoneVerifiedCode(param) {
 
 /*
   param{
-    phone: string
+    userPhone: string
     verifiedCode: string,
     password:string
   }
@@ -36,7 +36,7 @@ export async function register(param){
   return {
     code: 0,
     message: 'success',
-    userId: 0,
+    userPhone: '15850793383',
   };
 
 }
@@ -52,7 +52,7 @@ export async function login(param) {
   return {
     code: 0,
     message: 'success',
-    userId: 0,
+    userPhone: '15850793383',
   };
 
 }
