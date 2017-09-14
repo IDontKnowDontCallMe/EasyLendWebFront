@@ -8,8 +8,8 @@
 }
 
 .logo2 {
-  width: 58px;
-  height: 33px;
+  width: 61px;
+  height: 30px;
   margin: 23px 16px 10px -5px;
   background-image: url("../graphics/logo2.png");
   float: left;
@@ -21,6 +21,7 @@
 }
 
 .login_and_register {
+  color: #666666;
   text-align: center;
   margin: 12px 4px 16px 16px;
   float: right;
@@ -28,8 +29,13 @@
 }
 
 .login_and_register:hover {
+  color: #666666;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.link, .link:hover {
+  color: #666666;
 }
 
 .forgetForm {

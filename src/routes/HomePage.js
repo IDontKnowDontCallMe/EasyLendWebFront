@@ -263,7 +263,7 @@ class HomePage extends React.Component {
         userPhone: values['userPhone'],
         verifiedCode: values['verifiedCode'],
         password:values['password'],
-      }
+      };
 
       this.props.dispatch({
         type: 'loginUser/register',
@@ -271,11 +271,8 @@ class HomePage extends React.Component {
           ...param,
         },
       });
-
       form.resetFields();
     });
-
-
   };
 
   handleSendPhoneCode = () => {
@@ -312,16 +309,13 @@ class HomePage extends React.Component {
             payload:{count:count},
           });
         }
-
-
-
       }, 1000);
     }
 
 
     const param = {
       userPhone: userPhone,
-    }
+    };
 
     this.props.dispatch({
       type: 'loginUser/sendPhoneCode',
@@ -329,9 +323,6 @@ class HomePage extends React.Component {
         ...param,
       },
     });
-
-
-
   };
 
 
@@ -352,6 +343,7 @@ class HomePage extends React.Component {
                 <div>
                   <div className={styles.login_and_register} onClick={this.showLoginModal}>登陆</div>
                   <div className={styles.login_and_register} onClick={this.showRegisterModal}>注册</div>
+                  <div className={styles.login_and_register}><Link  className={styles.link} to="/homepage">首页</Link></div>
                 </div>
             }
 

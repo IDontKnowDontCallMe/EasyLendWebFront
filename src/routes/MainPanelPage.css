@@ -8,8 +8,8 @@
 }
 
 .logo2 {
-  width: 58px;
-  height: 33px;
+  width: 61px;
+  height: 30px;
   margin: 23px 16px 10px -5px;
   background-image: url("../graphics/logo2.png");
   float: left;
@@ -22,12 +22,18 @@
 
 .login_and_register {
   text-align: center;
+  color: #666666;
   margin: 12px 4px 16px 16px;
   float: right;
   font-size: 14px;
 }
 
 .login_and_register:hover {
+  color: #666666;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.link, .link:hover {
+  color: #666666;
 }

@@ -307,6 +307,7 @@ class MainPanelPage extends React.Component {
               <div>
                 <div className={styles.login_and_register} onClick={this.showLoginModal}>登陆</div>
                 <div className={styles.login_and_register} onClick={this.showRegisterModal}>注册</div>
+                <div className={styles.login_and_register}><Link  className={styles.link} to="/homepage">首页</Link></div>
               </div>
           }
 
