@@ -137,10 +137,10 @@ class BasicInfoAuthForm extends React.Component{
 
           <FormItem
             {...formItemLayout}
-            label="父或母姓名"
+            label="父亲姓名"
           >
-            {getFieldDecorator('parent', {
-              rules: [{ required: true, message: '请输入父或母姓名！' }],
+            {getFieldDecorator('fatherName', {
+              rules: [{ required: true, message: '请输入父亲姓名！' }],
             })(
               <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} />
             )}
@@ -148,12 +148,56 @@ class BasicInfoAuthForm extends React.Component{
 
           <FormItem
             {...formItemLayout}
-            label="父或母电话"
+            label="父亲职业"
           >
-            {getFieldDecorator('phone', {
-              rules: [{ required: true, message: '请输入父或母电话！' }],
+            {getFieldDecorator('fatherWork', {
+              rules: [{ required: true, message: '请输入父亲职业！' }],
             })(
-              <Input prefix={<Icon type="phone" style={{ fontSize: 13 }} />} />
+              <Input prefix={<Icon type="contacts" style={{ fontSize: 13 }} />} />
+            )}
+          </FormItem>
+
+          <FormItem
+            {...formItemLayout}
+            label="父亲收入"
+          >
+            {getFieldDecorator('fatherIncome', {
+              rules: [{ required: true, message: '请输入父亲收入！' }],
+            })(
+              <Input prefix={<Icon type="pay-circle-o" style={{ fontSize: 13 }} />} />
+            )}
+          </FormItem>
+
+          <FormItem
+            {...formItemLayout}
+            label="母亲姓名"
+          >
+            {getFieldDecorator('motherName', {
+              rules: [{ required: true, message: '请输入母亲姓名！' }],
+            })(
+              <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} />
+            )}
+          </FormItem>
+
+          <FormItem
+            {...formItemLayout}
+            label="母亲职业"
+          >
+            {getFieldDecorator('motherWork', {
+              rules: [{ required: true, message: '请输入母亲职业！' }],
+            })(
+              <Input prefix={<Icon type="contacts" style={{ fontSize: 13 }} />} />
+            )}
+          </FormItem>
+
+          <FormItem
+            {...formItemLayout}
+            label="母亲收入"
+          >
+            {getFieldDecorator('motherIncome', {
+              rules: [{ required: true, message: '请输入母亲收入！' }],
+            })(
+              <Input prefix={<Icon type="pay-circle-o" style={{ fontSize: 13 }} />} />
             )}
           </FormItem>
 

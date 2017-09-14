@@ -12,6 +12,7 @@ import CreditReportPage from './routes/CreaditReportPage';
 import CreditChartsPage from './routes/CreditChartsPage';
 import InvestPage from './routes/InvestPage';
 import NoContentPage from "./routes/NoContentPage";
+import AuthCompletedMention from './components/AuthCompletedMention'
 
 function RouterConfig({ history }) {
   return (
@@ -20,17 +21,17 @@ function RouterConfig({ history }) {
       <Route path="/homepage" component={HomePage}/>
       <Route path="/auth" component={MainPanelPage} >
         <IndexRoute components={BasicAuthPage}/>
-        <Route path="/auth/incomeAuth" component={IncomeAuthPage} />
+        {/*<Route path="/auth/incomeAuth" component={IncomeAuthPage} />*/}
         <Route path="/auth/zhimaAuth" component={ZhiMaCreditAuthPage} />
         <Route path="/auth/schoolAuth" component={SchoolAuthPage} />
         <Route path="/auth/icbcAuth" component={ICBCCardAuthPage} />
-        <Route path="/auth/xuexinAuth" component={XueXinWangAuthPage} />
+        {/*<Route path="/auth/xuexinAuth" component={XueXinWangAuthPage} />*/}
         <Route path="/auth/basicAuth" component={BasicAuthPage} />
         <Route path="/auth/creditReport" component={CreditReportPage}/>
         <Route path="/auth/creditCharts" component={CreditChartsPage}/>
         <Route path="/auth/investment" component={InvestPage}/>
       </Route>
-      <Route  path="/test" component={NoContentPage} />
+      <Route  path="/test" component={AuthCompletedMention} />
     </Router>
   );
 }

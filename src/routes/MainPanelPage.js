@@ -339,10 +339,10 @@ class MainPanelPage extends React.Component {
               >
                 <SubMenu key="sub1" title={<span><Icon type="user"/>信息认证</span>}>
                   <Menu.Item key="1"><Link to="/auth/basicAuth"/>基本信息认证</Menu.Item>
-                  <Menu.Item key="2"><Link to="/auth/incomeAuth"/>经济水平录入</Menu.Item>
+                  {/*<Menu.Item key="2"><Link to="/auth/incomeAuth"/>经济水平录入</Menu.Item>*/}
                   <Menu.Item key="3"><Link to="/auth/icbcAuth"/>工行账户绑定</Menu.Item>
                   <Menu.Item key="4"><Link to="/auth/schoolAuth"/>学校教务网认证</Menu.Item>
-                  <Menu.Item key="5"><Link to="/auth/xuexinAuth"/>学信网认证</Menu.Item>
+                  {/*<Menu.Item key="5"><Link to="/auth/xuexinAuth"/>学信网认证</Menu.Item>*/}
                   <Menu.Item key="6"><Link to="/auth/zhimaAuth"/>芝麻信用认证</Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub2" title={<span><Icon type="solution" />信用评估报告</span>}>

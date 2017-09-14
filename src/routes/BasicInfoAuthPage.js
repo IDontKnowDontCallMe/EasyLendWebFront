@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'dva'
 import BasicInfoAuthForm from '../components/BasicInfoAuthForm';
 import PageHeader from '../components/PageHeader.js';
+import AuthCompletedMention from '../components/AuthCompletedMention';
 
 /*
 created at 2017.9.11 by SJL
@@ -33,11 +34,18 @@ class BasicInfoAuthPage extends React.Component {
       return (
         <div>
           <PageHeader headerName="基本信息录入"/>
-          <BasicInfoAuthForm
-            basicInfoAuth={this.props.basicInfoAuth}
-            updateIdentityCardPhoto={this.updateIdentityCardPhoto}
-            updateFacePhoto={this.updateFacePhoto}
-          />
+          {
+            this.props.basicInfoAuth.hasAuth ?
+              <AuthCompletedMention
+                headerName="基本信息认证 "
+              />
+              :
+              <BasicInfoAuthForm
+                basicInfoAuth={this.props.basicInfoAuth}
+                updateIdentityCardPhoto={this.updateIdentityCardPhoto}
+                updateFacePhoto={this.updateFacePhoto}
+              />
+          }
         </div>
       );
 
