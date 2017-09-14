@@ -32,25 +32,16 @@ class ICBCCardAuthForm extends React.Component {
 
           <FormItem
             {...formItemLayout}
-            label="持卡人姓名"
+            label="持卡人学号"
           >
-            {getFieldDecorator('userName', {
-              rules: [{ required: true, message: '请输入持卡人姓名！' }],
+            {getFieldDecorator('stdNo', {
+              rules: [{ required: true, message: '请输入持卡人学号！' }],
             })(
               <Input />
             )}
           </FormItem>
 
-          <FormItem
-            {...formItemLayout}
-            label="密码"
-          >
-            {getFieldDecorator('password', {
-              rules: [{ required: true, message: '请输入密码！' }],
-            })(
-              <Input />
-            )}
-          </FormItem>
+
 
           <FormItem
             wrapperCol={{ span: 12, offset: 6 }}

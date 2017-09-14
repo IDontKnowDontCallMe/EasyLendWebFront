@@ -9,7 +9,7 @@ const app = dva({
       { name: 'dva', id: 1 },
       { name: 'antd', id: 2 },
     ],
-  }, 
+  },
 });
 
 // 2. Plugins
@@ -19,6 +19,10 @@ const app = dva({
 app.model(require('./models/products'));
 app.model(require('./models/loginUser'));
 app.model(require('./models/BasicInfoAuth'));
+app.model(require('./models/ICBCAuth'));
+app.model(require('./models/SchoolAuth'));
+app.model(require('./models/ZhiMaAuth'));
+
 
 // 4. Router
 app.router(require('./router'));

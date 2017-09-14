@@ -2,14 +2,12 @@
  * Created by hyx on 2017/8/29.
  */
 
-import { Layout, Menu, Breadcrumb, Button, Dropdown, Icon, Modal, Form, Input, Checkbox, Row, Col, Tooltip } from 'antd';
+import { Layout, Menu, Breadcrumb, Button, Dropdown, Icon, Modal, Form, Input, Checkbox, Row, Col, Tooltip, message } from 'antd';
 import React from 'react';
 import styles from './HomePage.css';
 import { Link, withRouter  } from 'dva/router';
 import {connect} from 'dva'
 
-import LoginForm from '../components/LoginForm';
-import RegisterForm from '../components/RegisterForm';
 
 
 const { Header, Content, Footer } = Layout;
@@ -75,10 +73,10 @@ const LoginCreateForm = Form.create()(
       >
         <Form onSubmit={onSubmit} style={{maxWidth: 300}}>
           <FormItem>
-            {getFieldDecorator('userName', {
+            {getFieldDecorator('userPhone', {
               rules: [{ required: true, message: '请输入您的用户名' }],
             })(
-              <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="用户名" />
+              <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="手机号" />
             )}
           </FormItem>
           <FormItem>
@@ -114,7 +112,7 @@ const LoginCreateForm = Form.create()(
  */
 const RegisterCreateForm = Form.create()(
   (props) => {
-    const { visible, onCancel, onSubmit, form } = props;
+    const { visible, onCancel, onSubmit, form, onSendPhoneCode, canSend, count } = props;
     const { getFieldDecorator } = form;
     const formItemLayout = {
       labelCol: {
@@ -141,20 +139,20 @@ const RegisterCreateForm = Form.create()(
             {...formItemLayout}
             label={(
               <span>
-              设置用户名&nbsp;
-                <Tooltip title="6~18位字符，只能包含英文字母、数字、下划线">
+              手机号&nbsp;
+                <Tooltip title="请输入您的手机号">
                 <Icon type="question-circle-o" />
               </Tooltip>
             </span>
             )}
             hasFeedback
           >
-            {getFieldDecorator('nickname', {
-              rules: [{ required: true, message: '请设置您的用户名', whitespace: true }],
+            {getFieldDecorator('userPhone', {
+              rules: [{ required: true, message: '请输入您的手机号', whitespace: true }],
             })(
               <Input />
             )}
-            <Button >获取验证码</Button>
+            <Button onClick={onSendPhoneCode} disabled={! canSend} >{canSend? '发送验证码': count+'秒'}</Button>
           </FormItem>
 
           <FormItem
@@ -217,7 +215,9 @@ class HomePage extends React.Component {
       type: 'loginUser/closeLoginForm',
     });
 
-    const form = this.form;
+    let form = this.refs.loginForm;
+    form.resetFields();
+    form = this.refs.registerForm;
     form.resetFields();
   };
 
@@ -228,9 +228,20 @@ class HomePage extends React.Component {
       if (err) {
         return;
       }
-      console.log('Received values of login form: ', values);
-      form.resetFields();
 
+      const param = {
+        userPhone: values['userPhone'],
+        password: values['password'],
+      }
+
+      this.props.dispatch({
+        type: 'loginUser/login',
+        payload: {
+          ...param,
+        },
+      });
+
+      form.resetFields();
     });
 
 
@@ -247,9 +258,80 @@ class HomePage extends React.Component {
       if (err) {
         return;
       }
-      console.log('Received values of register form: ', values);
+
+      const param = {
+        userPhone: values['userPhone'],
+        verifiedCode: values['verifiedCode'],
+        password:values['password'],
+      }
+
+      this.props.dispatch({
+        type: 'loginUser/register',
+        payload: {
+          ...param,
+        },
+      });
+
       form.resetFields();
     });
+
+
+  };
+
+  handleSendPhoneCode = () => {
+    const form = this.refs.registerForm;
+
+    const userPhone = form.getFieldValue('userPhone');
+
+    if(!userPhone){
+      message.error('请输入手机号');
+      return;
+    }
+
+    if(this.props.loginUser.canSend){
+      this.timer = setInterval(() => {
+        var count = this.props.loginUser.count;
+        this.props.dispatch({
+          type: 'loginUser/setNotCanSend',
+        });
+        count -= 1;
+        if (count < 1) {
+          this.props.dispatch({
+            type: 'loginUser/setCanSend',
+          });
+          this.props.dispatch({
+            type: 'loginUser/updateCount',
+            payload:{count:10},
+          });
+
+          clearInterval(this.timer);
+        }
+        else {
+          this.props.dispatch({
+            type: 'loginUser/updateCount',
+            payload:{count:count},
+          });
+        }
+
+
+
+      }, 1000);
+    }
+
+
+    const param = {
+      userPhone: userPhone,
+    }
+
+    this.props.dispatch({
+      type: 'loginUser/sendPhoneCode',
+      payload: {
+        ...param,
+      },
+    });
+
+
+
   };
 
 
@@ -259,8 +341,19 @@ class HomePage extends React.Component {
           <Header style={{ background: 'transparent' }}>
             <div className={styles.logo}/>
             <div className={styles.logo2}/>
-            <div className={styles.login_and_register} onClick={this.showLoginModal}>登陆</div>
-            <div className={styles.login_and_register} onClick={this.showRegisterModal}>注册</div>
+
+            {
+              this.props.loginUser.userPhone ?
+                <div>
+                  <div className={styles.login_and_register} >退出</div>
+                  <div className={styles.login_and_register} >{this.props.loginUser.userPhone}</div>
+                </div>
+                :
+                <div>
+                  <div className={styles.login_and_register} onClick={this.showLoginModal}>登陆</div>
+                  <div className={styles.login_and_register} onClick={this.showRegisterModal}>注册</div>
+                </div>
+            }
 
             <LoginCreateForm
               ref='loginForm'
@@ -273,6 +366,9 @@ class HomePage extends React.Component {
               visible={this.props.loginUser.showRegisterForm}
               onCancel={this.handleCancel}
               onSubmit={this.handleRegister}
+              onSendPhoneCode={this.handleSendPhoneCode}
+              canSend={this.props.loginUser.canSend}
+              count={this.props.loginUser.count}
             />
           </Header>
 

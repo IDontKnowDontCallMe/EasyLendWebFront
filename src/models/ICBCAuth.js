@@ -6,7 +6,7 @@ export default {
 
   namespace: 'ICBCAuth',
   state:{
-    hasAuth: false,
+    hasAuth: true,
   },
 
   subscriptions: {
