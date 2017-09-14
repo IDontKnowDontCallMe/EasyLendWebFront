@@ -11,6 +11,8 @@ import XueXinWangAuthPage from './routes/XueXinWangAuthPage';
 import CreditReportPage from './routes/CreaditReportPage';
 import CreditChartsPage from './routes/CreditChartsPage';
 import InvestPage from './routes/InvestPage';
+import PayBackPage from './routes/PayBackPage';
+import RentMoneyPage from './routes/RentMoneyPage';
 import NoContentPage from "./routes/NoContentPage";
 
 function RouterConfig({ history }) {
@@ -29,6 +31,8 @@ function RouterConfig({ history }) {
         <Route path="/auth/creditReport" component={CreditReportPage}/>
         <Route path="/auth/creditCharts" component={CreditChartsPage}/>
         <Route path="/auth/investment" component={InvestPage}/>
+        <Route path="/auth/payBack" component={PayBackPage}/>
+        <Route path="/auth/rentMoney" component={RentMoneyPage}/>
       </Route>
       <Route  path="/test" component={NoContentPage} />
     </Router>

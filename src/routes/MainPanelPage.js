@@ -47,8 +47,8 @@ class MainPanelPage extends React.Component {
                 </SubMenu>
                 <SubMenu key="sub3" title={<span><Icon type="wallet" />投资与借款</span>}>
                   <Menu.Item key="9"><Link to="/auth/investment"/>投资</Menu.Item>
-                  <Menu.Item key="10">借款</Menu.Item>
-                  <Menu.Item key="11">还款</Menu.Item>
+                  <Menu.Item key="10"><Link to="/auth/rentMoney"/>借款</Menu.Item>
+                  <Menu.Item key="11"><Link to="/auth/payBack"/>还款</Menu.Item>
                 </SubMenu>
               </Menu>
             </Sider>
