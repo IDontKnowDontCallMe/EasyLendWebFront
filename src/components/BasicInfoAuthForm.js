@@ -70,6 +70,9 @@ class BasicInfoAuthForm extends React.Component{
 
         console.log(values);
 
+        console.log(this.props.basicInfoAuth.identityCardPhotoUrl)
+        console.log(this.props.basicInfoAuth.facePhoto)
+
       }
     });
 
