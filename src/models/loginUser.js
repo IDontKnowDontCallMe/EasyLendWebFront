@@ -105,6 +105,8 @@ export default {
 
       const data = yield call(sendPhoneVerifiedCode, payload);
 
+
+
       if(data.code===0){
         if(data.message==='success'){
 

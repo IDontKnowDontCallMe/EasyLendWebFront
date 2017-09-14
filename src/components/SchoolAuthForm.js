@@ -6,6 +6,24 @@ const FormItem = Form.Item;
 
 class SchoolAuthForm extends React.Component {
 
+  onConfirm = (e) => {
+
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+
+        const param = {
+          stdNo: values['schoolId'],
+          password: values['password'],
+          phone: this.props.userPhone,
+        };
+
+        this.props.doSchoolAuth(param);
+
+      }
+    });
+
+  }
 
   render(){
 
@@ -16,7 +34,7 @@ class SchoolAuthForm extends React.Component {
     };
 
     return (
-      <Form>
+      <Form onSubmit={this.onConfirm}>
         <div>
 
           <FormItem
@@ -45,7 +63,7 @@ class SchoolAuthForm extends React.Component {
             wrapperCol={{ span: 12, offset: 6 }}
           >
             {getFieldDecorator('submit')(
-              <Button type="primary" htmlType="submit" >确认</Button>
+              <Button type="primary" htmlType="submit" loading={this.props.loading}>确认</Button>
             )}
           </FormItem>
 

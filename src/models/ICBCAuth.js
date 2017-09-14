@@ -6,7 +6,9 @@ export default {
 
   namespace: 'ICBCAuth',
   state:{
-    hasAuth: true,
+    hasAuth: false,
+
+    confirmLoading: false
   },
 
   subscriptions: {
@@ -49,6 +51,10 @@ export default {
 
     *doICBCAuth({ payload }, { call, put, select }){
 
+      yield put({
+        type:'changeLoading'
+      })
+
       const data = yield call(ICBCAuth, payload);
 
       if(data.code===0){
@@ -58,6 +64,10 @@ export default {
           });
         }
       }
+
+      yield put({
+        type:'changeLoading'
+      })
 
     }
 
@@ -72,6 +82,15 @@ export default {
       return {
         ...state,
         hasAuth:true,
+      }
+
+    },
+
+    changeLoading(state, action){
+
+      return {
+        ...state,
+        confirmLoading: !state.confirmLoading,
       }
 
     },

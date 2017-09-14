@@ -7,6 +7,8 @@ export default {
   namespace: 'schoolAuth',
   state:{
     hasAuth: false,
+
+    confirmLoading: false,
   },
 
   subscriptions: {
@@ -29,9 +31,9 @@ export default {
 
     *queryAuthState({payload},{call, put, select}){
 
-      const userId = yield select(state => state.loginUser.userId);
+      const userId = yield select(state => state.loginUser.userPhone);
 
-      const data = yield call(getAuthState, {userId: userId});
+      const data = yield call(getAuthState, {phone: userId});
 
       if(data.code===0){
         if(data.message==='success'){
@@ -49,15 +51,24 @@ export default {
 
     *doSchoolAuth({ payload }, { call, put, select }){
 
+      yield put({
+        type:'changeLoading'
+      })
+
       const data = yield call(schoolAuth, payload);
 
       if(data.code===0){
         if(data.message === 'success'){
+          console.log('25555')
           yield put({
             type:'authCompleted'
           });
         }
       }
+
+      yield put({
+        type:'changeLoading'
+      })
 
     }
 
@@ -72,6 +83,15 @@ export default {
       return {
         ...state,
         hasAuth:true,
+      }
+
+    },
+
+    changeLoading(state, action){
+
+      return {
+        ...state,
+        confirmLoading: !state.confirmLoading,
       }
 
     },

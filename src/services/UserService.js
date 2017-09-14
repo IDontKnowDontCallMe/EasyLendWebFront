@@ -1,4 +1,6 @@
 
+import {request} from '../utils/request';
+
 /*
   created at 2017.9.12 by SJL
  */
@@ -10,14 +12,24 @@
  */
 export async function sendPhoneVerifiedCode(param) {
 
-  console.log('UserService: sendPhoneVerifiedCode');
-  console.log(param);
+  // console.log('UserService: sendPhoneVerifiedCode');
+  // console.log(param);
+  //
+  // return {
+  //   code: 0,
+  //   message: 'success',
+  //   verifiedCode: '233233',
+  // };
 
-  return {
-    code: 0,
-    message: 'success',
-    verifiedCode: '233233',
-  };
+  return request('/credit/sendPhoneCode', {
+      method: 'POST',
+      body: JSON.stringify({
+        phone: param.userPhone,
+    }),
+  })
+
+
+
 
 }
 

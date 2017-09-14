@@ -7,6 +7,25 @@ const FormItem = Form.Item;
 class ICBCCardAuthForm extends React.Component {
 
 
+  onConfirm = (e) => {
+
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+
+        const param = {
+          stdNo: values['stdNo'],
+          bank_card: values['cardId'],
+          phone: this.props.userPhone,
+        };
+
+        this.props.doICBCAuth(param);
+
+      }
+    });
+
+  }
+
   render(){
 
     const { getFieldDecorator } = this.props.form;
@@ -16,7 +35,7 @@ class ICBCCardAuthForm extends React.Component {
     };
 
     return (
-      <Form>
+      <Form onSubmit={this.onConfirm}>
         <div>
 
           <FormItem
@@ -47,7 +66,7 @@ class ICBCCardAuthForm extends React.Component {
             wrapperCol={{ span: 12, offset: 6 }}
           >
             {getFieldDecorator('submit')(
-              <Button type="primary" htmlType="submit" >确认</Button>
+              <Button type="primary" htmlType="submit" loading={this.props.loading}>确认</Button>
             )}
           </FormItem>
 
