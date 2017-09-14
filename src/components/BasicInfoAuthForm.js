@@ -78,7 +78,7 @@ class BasicInfoAuthForm extends React.Component{
 
   }
 
-  render(){
+  render(){ 
 
     const { getFieldDecorator } = this.props.form;
     const formItemLayout = {

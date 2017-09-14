@@ -20,10 +20,10 @@ const { Header, Content, Footer } = Layout;
 const menu_confirmInfo = (
   <Menu className={styles.menu}>
     <Menu.Item key="1"><Link to="/auth/basicAuth" >基本信息认证</Link></Menu.Item>
-    <Menu.Item key="2"><Link to="/auth/incomeAuth" >经济水平录入</Link></Menu.Item>
+    {/*<Menu.Item key="2"><Link to="/auth/incomeAuth" >经济水平录入</Link></Menu.Item>*/}
     <Menu.Item key="3"><Link to="/auth/icbcAuth" >工行账户绑定</Link></Menu.Item>
     <Menu.Item key="4"><Link to="/auth/schoolAuth" >学校教务网认证</Link></Menu.Item>
-    <Menu.Item key="5"><Link to="/auth/xuexinAuth" >学信网认证</Link></Menu.Item>
+    {/*<Menu.Item key="5"><Link to="/auth/xuexinAuth" >学信网认证</Link></Menu.Item>*/}
     <Menu.Item key="6"><Link to="/auth/zhimaAuth" >芝麻信用认证</Link></Menu.Item>
   </Menu>
 );
