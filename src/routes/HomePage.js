@@ -46,8 +46,8 @@ const menu_creditReport = (
 const menu_renting = (
   <Menu className={styles.menu}>
     <Menu.Item key="9"><Link to="/auth/investment">投资</Link></Menu.Item>
-    <Menu.Item key="10">借款</Menu.Item>
-    <Menu.Item key="11">还款</Menu.Item>
+    <Menu.Item key="10"><Link to="/auth/rentMoney">借款</Link></Menu.Item>
+    <Menu.Item key="11"><Link to="/auth/payBack">还款</Link></Menu.Item>
   </Menu>
 );
 
@@ -193,8 +193,6 @@ const RegisterCreateForm = Form.create()(
  * UI界面
  */
 class HomePage extends React.Component {
-
-
 
   showLoginModal = () => {
     this.props.dispatch({
