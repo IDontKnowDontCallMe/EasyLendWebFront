@@ -75,6 +75,8 @@ export default {
 
         const data = yield call(login, payload);
 
+        console.log(data)
+
         if(data.code===0){
           if(data.message==='success'){
 
@@ -82,7 +84,7 @@ export default {
 
             yield put({
               type:'updateUserPhone',
-              payload:{userPhone:data.userPhone},
+              payload:{userPhone: payload.phone},
 
             })
 
@@ -106,7 +108,6 @@ export default {
       const data = yield call(sendPhoneVerifiedCode, payload);
 
 
-
       if(data.code===0){
         if(data.message==='success'){
 
@@ -118,6 +119,9 @@ export default {
         }
 
 
+      }
+      else {
+        message.error('请求失败，服务器down了或请重试')
       }
 
     },
