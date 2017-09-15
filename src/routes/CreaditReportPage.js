@@ -6,6 +6,8 @@ import React from 'react';
 import {Table} from 'antd';
 import styles from './CreditReportPage.css';
 import PageHeader from '../components/PageHeader.js';
+import {connect} from 'dva';
+
 
 /**
  * 基本信息的表头
@@ -192,6 +194,9 @@ for (let i = 0; i < 2; i++) {
 
 class CreaditReportPage extends React.Component {
 
+
+
+
   render() {
     return (
       <div>
@@ -252,4 +257,11 @@ class CreaditReportPage extends React.Component {
   }
 }
 
-export default CreaditReportPage;
+function mapStateToProps({ CreditReport,loginUser }) {
+  return {
+    CreditReport,
+    loginUser,
+  };
+}
+
+export default connect(mapStateToProps)(CreaditReportPage);

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Message, Icon, Button, Grid, Divider } from 'semantic-ui-react';
+import {Message, Icon, Button, Grid, Divider} from 'semantic-ui-react';
 
 
 class ZhiMaAuthForm extends React.Component {
@@ -10,15 +10,11 @@ class ZhiMaAuthForm extends React.Component {
       permit: 1,
       phone: this.props.userPhone,
     });
+  };
 
-  }
-
-  render(){
-
-
+  render() {
 
     return (
-
       <Grid columns={2} relaxed>
         <Grid.Column>
           <Message
@@ -37,57 +33,82 @@ class ZhiMaAuthForm extends React.Component {
           </Message>
         </Grid.Column>
 
-
         <Grid.Column verticalAlign="middle">
-          <Button primary size="massive" attached="right" onClick={this.onClick} loading={this.props.loading}>芝麻信用授权</Button>
+          <Button primary size="massive" attached="right" onClick={this.onClick}
+                  loading={this.props.loading}>芝麻信用授权</Button>
         </Grid.Column>
-
       </Grid>
-
-
-
     );
-
   }
-
 }
 
 export default ZhiMaAuthForm;
 
 
-{/*<Form>*/}
-  {/*<div>*/}
+{/*<Form>*/
+}
+{/*<div>*/
+}
 
-    {/*<FormItem*/}
-      {/*{...formItemLayout}*/}
-      {/*label="芝麻信用账号"*/}
-    {/*>*/}
-      {/*{getFieldDecorator('zhimaId', {*/}
-        {/*rules: [{ required: true, message: '请输入芝麻信用账号！' }],*/}
-      {/*})(*/}
-        {/*<Input />*/}
-      {/*)}*/}
-    {/*</FormItem>*/}
+{/*<FormItem*/
+}
+{/*{...formItemLayout}*/
+}
+{/*label="芝麻信用账号"*/
+}
+{/*>*/
+}
+{/*{getFieldDecorator('zhimaId', {*/
+}
+{/*rules: [{ required: true, message: '请输入芝麻信用账号！' }],*/
+}
+{/*})(*/
+}
+{/*<Input />*/
+}
+{/*)}*/
+}
+{/*</FormItem>*/
+}
 
-    {/*<FormItem*/}
-      {/*{...formItemLayout}*/}
-      {/*label="密码"*/}
-    {/*>*/}
-      {/*{getFieldDecorator('password', {*/}
-        {/*rules: [{ required: true, message: '请输入密码！' }],*/}
-      {/*})(*/}
-        {/*<Input />*/}
-      {/*)}*/}
-    {/*</FormItem>*/}
+{/*<FormItem*/
+}
+{/*{...formItemLayout}*/
+}
+{/*label="密码"*/
+}
+{/*>*/
+}
+{/*{getFieldDecorator('password', {*/
+}
+{/*rules: [{ required: true, message: '请输入密码！' }],*/
+}
+{/*})(*/
+}
+{/*<Input />*/
+}
+{/*)}*/
+}
+{/*</FormItem>*/
+}
 
-    {/*<FormItem*/}
-      {/*wrapperCol={{ span: 12, offset: 6 }}*/}
-    {/*>*/}
-      {/*{getFieldDecorator('submit')(*/}
-        {/*<Button type="primary" htmlType="submit" >确认</Button>*/}
-      {/*)}*/}
-    {/*</FormItem>*/}
+{/*<FormItem*/
+}
+{/*wrapperCol={{ span: 12, offset: 6 }}*/
+}
+{/*>*/
+}
+{/*{getFieldDecorator('submit')(*/
+}
+{/*<Button type="primary" htmlType="submit" >确认</Button>*/
+}
+{/*)}*/
+}
+{/*</FormItem>*/
+}
 
-  {/*</div>*/}
+{/*</div>*/
+}
 
-{/*</Form>*/}
+{/*</Form>*/
+}

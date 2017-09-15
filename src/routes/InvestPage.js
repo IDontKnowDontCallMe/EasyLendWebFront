@@ -26,7 +26,7 @@ const cards = [
   {
     name: '中银平稳理财计划-智荟系列2017年【11】期',
     rates: '5.35%',
-    description: '投资风险说明：资金信托，动产信托，不动产信托，有价证券信托，其他财产或财产权信托，作为投资基金或者基金管理公司的发起人从事投资基金业务，经营企业资产的重组、购并及其项目融资、公司理财、财务顾问等业务，受托经营国务院有关部门批准的证券承销业务，办理居间、咨询、资信调查等业务，代保管及保管箱业务，以存放同业、拆放同业、贷款、租赁、投资方式运用固有财产，以固有财产为他人提供担保，从事同业拆借，法律法规规定或中国银行业监督管理委员会批准的其他业务。'
+    description: '资金信托，动产信托，不动产信托，有价证券信托，其他财产或财产权信托，作为投资基金或者基金管理公司的发起人从事投资基金业务，经营企业资产的重组、购并及其项目融资、公司理财、财务顾问等业务，受托经营国务院有关部门批准的证券承销业务，办理居间、咨询、资信调查等业务，代保管及保管箱业务，以存放同业、拆放同业、贷款、租赁、投资方式运用固有财产，以固有财产为他人提供担保，从事同业拆借，法律法规规定或中国银行业监督管理委员会批准的其他业务。'
   },
   {
     name: '中银智荟理财计划2017年007期',
@@ -53,7 +53,7 @@ const cards = [
 const CardGroups = () => (
   <div>
     <PageHeader headerName="投资"/>
-    <Card.Group itemsPerRow={4}>
+    <Card.Group itemsPerRow={4} style={{marginTop: -10}}>
       {
         cards.map((card, i) =>
           <Card>
@@ -65,7 +65,7 @@ const CardGroups = () => (
                 利率：{card.rates}
               </Card.Meta>
               <Card.Description>
-                {card.description}
+                风险说明：{card.description}
               </Card.Description>
             </Card.Content>
             <Card.Content extra>

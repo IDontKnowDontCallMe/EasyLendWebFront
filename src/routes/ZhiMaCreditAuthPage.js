@@ -16,8 +16,7 @@ class ZhiMaCreditAuthPage extends React.Component {
     if(this.props.loginUser.userPhone==null){
       this.props.dispatch({
         type:'loginUser/showLoginForm',
-      })
-
+      });
       return;
     }
     else{
@@ -26,8 +25,7 @@ class ZhiMaCreditAuthPage extends React.Component {
         payload: {...param}
       })
     }
-
-  }
+  };
 
   render(){
 
@@ -46,12 +44,9 @@ class ZhiMaCreditAuthPage extends React.Component {
               loading={this.props.ZhiMaAuth.confirmLoading}
             />
         }
-
       </div>
     );
-
   }
-
 }
 
 function mapStateToProps({ ZhiMaAuth,loginUser }) {

@@ -35,7 +35,7 @@ const cards = [
 const PayBackCard = () => (
   <div>
     <PageHeader headerName="还款"/>
-    <Card.Group itemsPerRow={4}>
+    <Card.Group itemsPerRow={4} style={{marginTop: -10}}>
       {
         cards.map((card, i) =>
           <Card>
