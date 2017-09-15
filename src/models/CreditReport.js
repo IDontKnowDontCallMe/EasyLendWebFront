@@ -2,7 +2,6 @@ import pathToRegexp from 'path-to-regexp';
 import {message} from 'antd';
 import {getAuthState} from '../services/AuthService';
 import {getCreditReport} from '../services/CreditReportService';
-import {message} from 'antd';
 
 
 export default {
@@ -44,7 +43,7 @@ export default {
   },
 
   effects: {
-    *ifAllAuthorized({call, put, select}){
+    *ifAllAuthorized({payload},{call, put, select}){
 
       const userId = yield select(state => state.loginUser.userPhone);
       const data = yield call(getAuthState, {phone: userId});
@@ -55,8 +54,9 @@ export default {
             yield put({
               type: 'authCompleted'
             });
-            dispatch({
+            yield put({
               type: 'getCreditReport',
+              payload: {phone:userId},
             });
           }
           else {
@@ -70,6 +70,8 @@ export default {
       const data = yield call(getCreditReport, payload);
       if (data.code === 0) {
         if (data.message === 'success') {
+          console.log(credit)
+          console.log(data)
           yield put({
             type: 'setInfo',
             payload: {

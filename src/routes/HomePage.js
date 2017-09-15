@@ -108,6 +108,14 @@ const LoginCreateForm = Form.create()(
  * 注册表单
  * @type {*<TOwnProps>}
  */
+const checkIsPhone = (rule, value, callback) => {
+  if (!/^1(3|4|5|7|8)\d{9}$/.test(value)) {
+    callback('手机格式有误请检查!');
+  } else {
+    callback();
+  }
+}
+
 const RegisterCreateForm = Form.create()(
   (props) => {
     const { visible, onCancel, onSubmit, form, onSendPhoneCode, canSend, count } = props;
@@ -146,7 +154,9 @@ const RegisterCreateForm = Form.create()(
             hasFeedback
           >
             {getFieldDecorator('userPhone', {
-              rules: [{ required: true, message: '请输入您的手机号', whitespace: true }],
+              rules: [{ required: true, message: '请输入您的手机号', whitespace: true },
+                {validator: checkIsPhone,}
+              ],
             })(
               <Input />
             )}
@@ -253,7 +263,7 @@ class HomePage extends React.Component {
         },
       });
 
-      form.resetFields();
+      //form.resetFields();
     });
 
 
@@ -284,7 +294,7 @@ class HomePage extends React.Component {
           ...param,
         },
       });
-      form.resetFields();
+      //form.resetFields();
     });
   };
 

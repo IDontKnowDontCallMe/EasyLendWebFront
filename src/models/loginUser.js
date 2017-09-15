@@ -57,7 +57,7 @@ export default {
 
       const userPhone = sessionStorage.getItem('userPhone');
 
-      if(userPhone){
+      if(userPhone && userPhone !== undefined){
 
         dispatch({
           type: 'updateUserPhone',
@@ -75,18 +75,30 @@ export default {
 
         const data = yield call(login, payload);
 
-        console.log(data)
-
         if(data.code===0){
           if(data.message==='success'){
 
-            sessionStorage.setItem('userPhone', data.userPhone);
+            sessionStorage.setItem('userPhone', payload.phone);
 
             yield put({
               type:'updateUserPhone',
               payload:{userPhone: payload.phone},
 
-            })
+            });
+
+            yield put({
+              type:'basicInfoAuth/queryAuthState',
+            });
+            yield put({
+              type:'ICBCAuth/queryAuthState',
+            });
+            yield put({
+              type:'schoolAuth/queryAuthState',
+            });
+            yield put({
+              type:'ZhiMaAuth/queryAuthState',
+            });
+
 
             yield put({
               type:'closeLoginForm',
@@ -100,6 +112,9 @@ export default {
 
 
         }
+        else {
+          message.error(data.message)
+        }
 
     },
 
@@ -109,19 +124,14 @@ export default {
 
 
       if(data.code===0){
-        if(data.message==='success'){
 
-          message.success('验证码已发送!')
+        message.success('验证码已发送!')
 
-        }
-        else {
-          message.error('验证码错误!')
-        }
-
+        console.log(data)
 
       }
       else {
-        message.error('请求失败，服务器down了或请重试')
+        message.error('手机格式不正确')
       }
 
     },
@@ -149,6 +159,9 @@ export default {
         }
 
 
+      }
+      else {
+        message.error(data.message)
       }
 
     },

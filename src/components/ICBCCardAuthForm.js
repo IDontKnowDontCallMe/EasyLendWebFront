@@ -6,6 +6,13 @@ const FormItem = Form.Item;
 
 class ICBCCardAuthForm extends React.Component {
 
+  checkIsPhone = (rule, value, callback) => {
+    if (!/^1(3|4|5|7|8)\d{9}$/.test(value)) {
+      callback('手机格式有误请检查!');
+    } else {
+      callback();
+    }
+  }
 
   onConfirm = (e) => {
 
@@ -14,9 +21,8 @@ class ICBCCardAuthForm extends React.Component {
       if (!err) {
 
         const param = {
-          stdNo: values['stdNo'],
-          bank_card: values['cardId'],
-          phone: this.props.userPhone,
+          bankCard: values['cardId'],
+          phone: values['phone'],
         };
 
         this.props.doICBCAuth(param);
@@ -51,10 +57,12 @@ class ICBCCardAuthForm extends React.Component {
 
           <FormItem
             {...formItemLayout}
-            label="持卡人学号"
+            label="持卡人手机"
           >
-            {getFieldDecorator('stdNo', {
-              rules: [{ required: true, message: '请输入持卡人学号！' }],
+            {getFieldDecorator('phone', {
+              rules: [{ required: true, message: '请输入持卡人手机！' },
+                       {validator: this.checkIsPhone,}
+                       ],
             })(
               <Input />
             )}

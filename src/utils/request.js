@@ -23,17 +23,19 @@ function checkStatus(response) {
 
 function handleError(response) {
 
-  let promise = parse(response);
+  // let promise = parse(response);
+  //
+  // if (promise == null) {
+  //   return { status: response.status, ok: false };
+  // }
+  //
+  // return promise.then((data) => {
+  //   data.status = response.status;
+  //   data.ok = response.ok;
+  //   return data;
+  // });
 
-  if (promise == null) {
-    return { status: response.status, ok: false };
-  }
-
-  return promise.then((data) => {
-    data.status = response.status;
-    data.ok = response.ok;
-    return data;
-  });
+  return { status: response.status, ok: false, message:'500或400错误' };
 }
 
 /**
@@ -58,9 +60,9 @@ export function request(url, options) {
     options.headers = {};
   }
 
-  if(options.headers['Content-Type'] == null){
-    options.headers['Content-Type'] = 'application/json';
-  }
+  //  if(options.headers['Content-Type'] == null){
+  //    options.headers['Content-Type'] = '';
+  // }
 
   //options.headers['Access-Control-Allow-Origin'] = '*';
 

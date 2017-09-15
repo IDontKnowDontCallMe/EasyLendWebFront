@@ -10,8 +10,8 @@ class NoContentPage extends React.Component {
 
   onClick = () => {
     this.props.dispatch({
-      type: 'schoolAuth/queryAuthState',
-      payload: {phone: '15558'},
+      type: 'loginUser/sendPhoneCode' ,
+      payload: {userPhone: '15558'},
       //, stdNo:'151250126', verifyCode:'666665', password:'123456'
     })
   }

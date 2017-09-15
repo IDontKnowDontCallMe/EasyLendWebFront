@@ -22,21 +22,32 @@ import {request} from "../utils/request"
  */
 export async function basicAuth(param) {
 
-  console.log('AuthService: basicAuth');
-  console.log(param);
+  // console.log('AuthService: basicAuth');
+  // console.log(param);
+  //
+  // return {
+  //   code: 0,
+  //   message: 'success',
+  // };
 
-  return {
-    code: 0,
-    message: 'success',
-  };
 
-  // return request('/credit/checkBasicData', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': "multipart/form-data",
-  //   },
-  //   body: {...param},
-  // })
+
+  const formdata = new FormData();
+  formdata.append('phone',param.phone);
+  formdata.append('identityCardPhoto', param.identityCardPhoto)
+  formdata.append('facePhoto',param.facePhoto);
+  formdata.append('motherName', param.motherName)
+  formdata.append('motherIncome',param.motherIncome);
+  formdata.append('motherJob', param.motherJob)
+  formdata.append('fatherName',param.fatherName);
+  formdata.append('fatherIncome', param.fatherIncome)
+  formdata.append('fatherJob', param.fatherJob)
+
+
+  return request('/credit/checkBasicData', {
+    method: 'POST',
+    body: formdata
+  })
 
 }
 
@@ -50,13 +61,24 @@ export async function basicAuth(param) {
  */
 export async function schoolAuth(param) {
 
-  console.log('AuthService: schoolAuth');
-  console.log(param);
+  // console.log('AuthService: schoolAuth');
+  // console.log(param);
+  //
+  // return {
+  //   code: 0,
+  //   message: 'success',
+  // };
 
-  return {
-    code: 0,
-    message: 'success',
-  };
+  const formdata = new FormData();
+  formdata.append('stdNo',param.stdNo);
+  formdata.append('password', param.password)
+
+
+
+  return request('/credit/academicSystem', {
+    method: 'POST',
+    body: formdata
+  })
 
 }
 
@@ -71,13 +93,22 @@ export async function schoolAuth(param) {
  */
 export async function ICBCAuth(param) {
 
-  console.log('AuthService: ICBCAuth');
-  console.log(param);
+  // console.log('AuthService: ICBCAuth');
+  // console.log(param);
+  //
+  // return {
+  //   code: 0,
+  //   message: 'success',
+  // };
 
-  return {
-    code: 0,
-    message: 'success',
-  };
+  const formdata = new FormData();
+  formdata.append('phone', param.phone);
+  formdata.append('bank_card', param.bankCard );
+
+  return request('/credit/addBankCard', {
+    method: 'POST',
+    body: formdata
+  })
 
 }
 
@@ -90,13 +121,18 @@ export async function ICBCAuth(param) {
  */
 export async function ZhiMaAuth(param) {
 
-  console.log('AuthService: ZhiMaAuth');
-  console.log(param);
+  // console.log('AuthService: ZhiMaAuth');
+  // console.log(param);
+  //
+  // return {
+  //   code: 0,
+  //   message: 'success',
+  // };
 
-  return {
-    code: 0,
-    message: 'success',
-  };
+
+  return request(`/credit/confirm_ZhiMaCredit?permit=1&phone=${param.phone}`, {
+    method: 'GET',
+  })
 
 }
 
@@ -110,17 +146,17 @@ export async function ZhiMaAuth(param) {
   }
 
  */
-export async function incomeAuth(param) {
-
-  console.log('AuthService: incomeAuth');
-  console.log(param);
-
-  return {
-    code: 0,
-    message: 'success',
-  };
-
-}
+// export async function incomeAuth(param) {
+//
+//   console.log('AuthService: incomeAuth');
+//   console.log(param);
+//
+//   return {
+//     code: 0,
+//     message: 'success',
+//   };
+//
+// }
 
 /*
    param{
@@ -130,17 +166,17 @@ export async function incomeAuth(param) {
    }
 
  */
-export async function XueXinAuth(param) {
-
-  console.log('AuthService: XueXinAuth');
-  console.log(param);
-
-  return {
-    code: 0,
-    message: 'success',
-  };
-
-}
+// export async function XueXinAuth(param) {
+//
+//   console.log('AuthService: XueXinAuth');
+//   console.log(param);
+//
+//   return {
+//     code: 0,
+//     message: 'success',
+//   };
+//
+// }
 
 /*
   param{
@@ -174,7 +210,6 @@ export async function getAuthState(param) {
     p='';
   }
 
-  console.log('/credit/getCheckState'+p)
 
   return request('/credit/getCheckState'+p, {
     method: 'GET',

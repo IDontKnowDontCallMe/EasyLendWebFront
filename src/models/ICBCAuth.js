@@ -55,6 +55,9 @@ export default {
         type:'changeLoading'
       })
 
+      console.log('bank auth')
+      console.log(payload)
+
       const data = yield call(ICBCAuth, payload);
 
       if(data.code===0){
@@ -63,6 +66,9 @@ export default {
             type:'authCompleted'
           });
         }
+      }
+      else {
+        message.error(data.message);
       }
 
       yield put({

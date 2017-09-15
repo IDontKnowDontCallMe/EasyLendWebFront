@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, Upload, Icon, message  } from 'antd';
+import { Form, Input, Button, Upload, Icon, message, InputNumber  } from 'antd';
 import styles from './BasicInfoAuthForm.css';
 
 const FormItem = Form.Item;
@@ -195,7 +195,7 @@ class BasicInfoAuthForm extends React.Component{
             {getFieldDecorator('fatherIncome', {
               rules: [{ required: true, message: '请输入父亲收入！' }],
             })(
-              <Input prefix={<Icon type="pay-circle-o" style={{ fontSize: 13 }} />} />
+              <InputNumber prefix={<Icon type="pay-circle-o" style={{ fontSize: 13 }} />} />
             )}
           </FormItem>
 
@@ -228,7 +228,7 @@ class BasicInfoAuthForm extends React.Component{
             {getFieldDecorator('motherIncome', {
               rules: [{ required: true, message: '请输入母亲收入！' }],
             })(
-              <Input prefix={<Icon type="pay-circle-o" style={{ fontSize: 13 }} />} />
+              <InputNumber prefix={<Icon type="pay-circle-o" style={{ fontSize: 13 }} />} />
             )}
           </FormItem>
 
