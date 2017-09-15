@@ -9,9 +9,7 @@ import { Link, withRouter  } from 'dva/router';
 import {connect} from 'dva'
 
 
-
 const { Header, Content, Footer } = Layout;
-
 
 /**
  * 信息认证选择列表
@@ -65,7 +63,7 @@ const LoginCreateForm = Form.create()(
     return (
       <Modal
         visible={visible}
-        title="登陆严易贷"
+        title="登陆未来信"
         okText="登陆"
         onCancel={onCancel}
         onOk={onSubmit}
@@ -128,7 +126,7 @@ const RegisterCreateForm = Form.create()(
     return (
       <Modal
         visible={visible}
-        title="注册严易贷"
+        title="注册未来信"
         okText="注册"
         onCancel={onCancel}
         onOk={onSubmit}
