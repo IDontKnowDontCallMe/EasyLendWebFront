@@ -5,6 +5,9 @@ import React from 'react';
 import echarts from 'echarts/lib/echarts';
 import ReactEcharts from 'echarts-for-react';
 import PageHeader from '../components/PageHeader.js';
+import AnimatedNumber from 'react-animated-number';
+import styles from './CreditChartsPage.css';
+
 
 const option = {
   backgroundColor: "#ffffff",
@@ -14,11 +17,11 @@ const option = {
     formatter: "{b} : {c}次"
   },
   legend: {
-    left: '13%',
+    left: '9%',
     data: ['大学生消费区间']
   },
   grid: {
-    left: '10%',
+    left: '6%',
     right: '35%',
     top: '16%',
     bottom: '6%',
@@ -39,6 +42,7 @@ const option = {
     },
     axisTick: {
       alignWithLabel: true,
+      interval: 0  // 设置成0强制显示所有标签
     },
     axisLabel: {
       textStyle: {
@@ -153,12 +157,37 @@ class CreditChartsPage extends React.Component {
     return (
       <div>
         <PageHeader headerName="数据分析"/>
-        <ReactEcharts
-          option={option}
-          notMerge={true}
-          lazyUpdate={true}
-          theme={"theme_name"}
-           />
+        <div className={styles.hint}>
+          <span className={styles.label}>预测借款违约概率:</span>
+          <AnimatedNumber
+            component="text"
+            value={100}
+            initialValue={0}
+            style={{
+              transition: '0.8s ease-out',
+              fontSize: 48,
+              transitionProperty: 'background-color, color, opacity'
+            }}
+            frameStyle={perc => (
+              perc === 100 ? {} : {backgroundColor: '#ffeb3b'}
+            )}
+            duration={1000}
+            formatValue={n => n + "%"}
+            stepPrecision={0.01}
+          />
+        </div>
+
+        <div>
+          <div className={styles.hint2}>
+            <span className={styles.label}>日常消费水平统计:</span>
+          </div>
+          <ReactEcharts
+            option={option}
+            notMerge={true}
+            lazyUpdate={true}
+            theme={"theme_name"}
+          />
+        </div>
       </div>
     );
   }

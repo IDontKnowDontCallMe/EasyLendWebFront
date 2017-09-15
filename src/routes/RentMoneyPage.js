@@ -147,7 +147,7 @@ class RentMoneyPage extends React.Component {
             label="目标借款银行"
             hasFeedback
           >
-            {getFieldDecorator('select', {
+            {getFieldDecorator('bank', {
               rules: [
                 { required: true, message: '请选择目标借款银行' },
               ],
@@ -168,7 +168,7 @@ class RentMoneyPage extends React.Component {
             label="还款期限"
             hasFeedback
           >
-            {getFieldDecorator('select', {
+            {getFieldDecorator('deadline', {
               rules: [
                 { required: true, message: '请选择还款期限' },
               ],
@@ -187,7 +187,7 @@ class RentMoneyPage extends React.Component {
             label="个人借款说明"
             hasFeedback
           >
-            {getFieldDecorator('select', {
+            {getFieldDecorator('statement', {
               rules: [
                 { required: true, message: '请输入个人借款说明' },
               ],
