@@ -201,66 +201,72 @@ class CreaditReportPage extends React.Component {
     return (
       <div>
         <PageHeader headerName="数据记录"/>
-        <div className={styles.table}>
-          <Table
-            columns={basicData_columns}
-            dataSource={basic_data}
-            bordered
-            title={() => '报告基本信息'}
-            pagination={false}
-          />
-        </div>
-        <div className={styles.table}>
-          <Table
-            columns={eduInfo_columns}
-            dataSource={eduInfo_data}
-            bordered
-            title={() => '报告学校信息'}
-            pagination={false}
-          />
-        </div>
-        <div className={styles.table}>
-          <Table
-            columns={scholarship_columns}
-            dataSource={scholarship_data}
-            bordered
-            title={() => '报告奖学金获奖记录'}
-            showSizeChanger={true}
-            defaultPageSize={5}
-            pageSize={5}
-          />
-        </div>
-        <div className={styles.table}>
-          <Table
-            columns={volunteer_columns}
-            dataSource={volunteer_data}
-            bordered
-            title={() => '报告志愿活动记录'}
-            showSizeChanger={true}
-            defaultPageSize={5}
-            pageSize={5}
-          />
-        </div>
-        <div className={styles.table}>
-          <Table
-            columns={bankAccount_columns}
-            dataSource={bankAccount_data}
-            bordered
-            title={() => '报告银行卡消费记录'}
-            showSizeChanger={true}
-            defaultPageSize={5}
-            pageSize={5}
-          />
-        </div>
+        {
+          this.props.CreditReport.hasAllAuth ?
+            <div>
+              <div className={styles.table}>
+                <Table
+                  columns={basicData_columns}
+                  dataSource={basic_data}
+                  bordered
+                  title={() => '报告基本信息'}
+                  pagination={false}
+                />
+              </div>
+              <div className={styles.table}>
+                <Table
+                  columns={eduInfo_columns}
+                  dataSource={eduInfo_data}
+                  bordered
+                  title={() => '报告学校信息'}
+                  pagination={false}
+                />
+              </div>
+              <div className={styles.table}>
+                <Table
+                  columns={scholarship_columns}
+                  dataSource={scholarship_data}
+                  bordered
+                  title={() => '报告奖学金获奖记录'}
+                  showSizeChanger={true}
+                  defaultPageSize={5}
+                  pageSize={5}
+                />
+              </div>
+              <div className={styles.table}>
+                <Table
+                  columns={volunteer_columns}
+                  dataSource={volunteer_data}
+                  bordered
+                  title={() => '报告志愿活动记录'}
+                  showSizeChanger={true}
+                  defaultPageSize={5}
+                  pageSize={5}
+                />
+              </div>
+              <div className={styles.table}>
+                <Table
+                  columns={bankAccount_columns}
+                  dataSource={bankAccount_data}
+                  bordered
+                  title={() => '报告银行卡消费记录'}
+                  showSizeChanger={true}
+                  defaultPageSize={5}
+                  pageSize={5}
+                />
+              </div>
+            </div>
+            :
+            <span className={styles.label}>请先前往信息验证页面完成所有验证！</span>
+        }
       </div>
     );
   }
 }
 
-function mapStateToProps({ CreditReport,loginUser }) {
+function mapStateToProps({ CreditReport }) {
   return {
     CreditReport,
-    loginUser,
   };
 }
 
