@@ -126,6 +126,8 @@ export default {
 
       const data = yield call(register, payload);
 
+      console.log(payload)
+
       if(data.code===0){
         if(data.message==='success'){
 

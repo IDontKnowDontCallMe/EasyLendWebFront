@@ -73,19 +73,32 @@ class BasicInfoAuthForm extends React.Component{
           return;
         }
 
+        // const formData = new FormData();
+        // formData.append('phone', this.props.userPhone);
+        // formData.append('identityCardPhoto', this.props.basicInfoAuth.identityCardPhoto);
+        // formData.append('facePhoto', this.props.basicInfoAuth.facePhoto);
+        // formData.append('motherName', values['motherName']);
+        // formData.append('motherIncome', values['motherIncome']);
+        // formData.append('motherJob', values['motherWork']);
+        // formData.append('fatherName', values['fatherName']);
+        // formData.append('fatherIncome', values['fatherIncome']);
+        // formData.append('fatherJob', values['fatherJob']);
 
-        const formData = new FormData();
-        formData.append('phone', this.props.userPhone);
-        formData.append('identityCardPhoto', this.props.basicInfoAuth.identityCardPhoto);
-        formData.append('facePhoto', this.props.basicInfoAuth.facePhoto);
-        formData.append('motherName', values['motherName']);
-        formData.append('motherIncome', values['motherIncome']);
-        formData.append('motherJob', values['motherWork']);
-        formData.append('fatherName', values['fatherName']);
-        formData.append('fatherIncome', values['fatherIncome']);
-        formData.append('fatherJob', values['fatherJob']);
+        const param = {
+          phone: this.props.userPhone,
+          identityCardPhoto: this.props.basicInfoAuth.identityCardPhoto,
+          facePhoto: this.props.basicInfoAuth.facePhoto,
+          motherName: values['motherName'],
+          motherIncome:values['motherIncome'],
+          motherJob:values['motherWork'],
+          fatherName:values['fatherName'],
+          fatherIncome:values['fatherIncome'],
+          fatherJob:values['fatherWork'],
+        };
 
-        this.props.doBasicAuth(formData);
+        console.log(param);
+
+        this.props.doBasicAuth(param);
 
 
       }

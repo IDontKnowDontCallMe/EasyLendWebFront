@@ -42,14 +42,20 @@ export async function sendPhoneVerifiedCode(param) {
  */
 export async function register(param){
 
-  console.log('UserService: register');
-  console.log(param);
+  // console.log('UserService: register');
+  // console.log(param);
+  //
+  // return {
+  //   code: 0,
+  //   message: 'success',
+  //   userPhone: '15850793383',
+  // };
 
-  return {
-    code: 0,
-    message: 'success',
-    userPhone: '15850793383',
-  };
+  const p = '?phone=' + param.phone +  '&stdNo=' + param.stdNo + '&verifyCode=' + param.verifyCode + '&password=' + param.password;
+
+  return request('/credit/checkPhone'+p, {
+    method: 'GET',
+  })
 
 }
 

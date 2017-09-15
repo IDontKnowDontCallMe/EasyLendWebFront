@@ -35,6 +35,7 @@ export default {
 
       const data = yield call(getAuthState, {phone: userId});
 
+
       if(data.code===0){
         if(data.message==='success'){
           if(data.hasSchoolAuth){
@@ -59,7 +60,6 @@ export default {
 
       if(data.code===0){
         if(data.message === 'success'){
-          console.log('25555')
           yield put({
             type:'authCompleted'
           });

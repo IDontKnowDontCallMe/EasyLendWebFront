@@ -3,7 +3,6 @@ import fetch from 'dva/fetch';
 const host = 'http://120.27.199.164:5000'
 
 function parse(response) {
-  console.log(response)
 
   let promise = null;
 
@@ -14,13 +13,16 @@ function parse(response) {
 }
 
 function checkStatus(response) {
+  console.log('check s start')
   if (response.status >= 200 && response.status < 300) {
     return response;
   }
+  console.log('check s end ')
   throw response;
 }
 
 function handleError(response) {
+
   let promise = parse(response);
 
   if (promise == null) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
+import {connect} from 'dva';
 import {Button, Card, Image} from 'semantic-ui-react'
 import styles from './NoContentPage.css';
 
@@ -7,73 +8,27 @@ const { Header, Content, Footer } = Layout;
 
 class NoContentPage extends React.Component {
 
+  onClick = () => {
+    this.props.dispatch({
+      type: 'schoolAuth/queryAuthState',
+      payload: {phone: '15558'},
+      //, stdNo:'151250126', verifyCode:'666665', password:'123456'
+    })
+  }
+
   render() {
     return (
-      <Card.Group>
-        <Card>
-          <Card.Content>
-            <Image floated='right' size='mini' src='/assets/images/avatar/large/steve.jpg' />
-            <Card.Header>
-              Steve Sanders
-            </Card.Header>
-            <Card.Meta>
-              Friends of Elliot
-            </Card.Meta>
-            <Card.Description>
-              Steve wants to add you to the group <strong>best friends</strong>
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <div className='ui two buttons'>
-              <Button basic color='green'>Approve</Button>
-              <Button basic color='red'>Decline</Button>
-            </div>
-          </Card.Content>
-        </Card>
-        <Card>
-          <Card.Content>
-            <Image floated='right' size='mini' src='/assets/images/avatar/large/molly.png' />
-            <Card.Header>
-              Molly Thomas
-            </Card.Header>
-            <Card.Meta>
-              New User
-            </Card.Meta>
-            <Card.Description>
-              Molly wants to add you to the group <strong>musicians</strong>
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <div className='ui two buttons'>
-              <Button basic color='green'>Approve</Button>
-              <Button basic color='red'>Decline</Button>
-            </div>
-          </Card.Content>
-        </Card>
-        <Card>
-          <Card.Content>
-            <Image floated='right' size='mini' src='/assets/images/avatar/large/jenny.jpg' />
-            <Card.Header>
-              Jenny Lawrence
-            </Card.Header>
-            <Card.Meta>
-              New User
-            </Card.Meta>
-            <Card.Description>
-              Jenny requested permission to view your contact details
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <div className='ui two buttons'>
-              <Button basic color='green'>Approve</Button>
-              <Button basic color='red'>Decline</Button>
-            </div>
-          </Card.Content>
-        </Card>
-      </Card.Group>
+      <Button primary onClick={this.onClick}>click</Button>
     );
   }
 
 }
 
-export default NoContentPage;
+function mapStateToProps({ loginUser, schoolAuth }) {
+  return {
+    loginUser,
+    schoolAuth,
+  };
+}
+
+export default connect(mapStateToProps)(NoContentPage);

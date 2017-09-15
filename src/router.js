@@ -35,7 +35,7 @@ function RouterConfig({ history }) {
         <Route path="/auth/payBack" component={PayBackPage}/>
         <Route path="/auth/rentMoney" component={RentMoneyPage}/>
       </Route>
-      <Route  path="/test" component={AuthCompletedMention} />
+      <Route  path="/test" component={NoContentPage} />
     </Router>
   );
 }

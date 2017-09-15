@@ -131,6 +131,20 @@ const RegisterCreateForm = Form.create()(
 
           <FormItem
             {...formItemLayout}
+            label="学号"
+            hasFeedback
+          >
+            {getFieldDecorator('stdNo', {
+              rules: [{
+                required: true, message: '请输入您的学号',
+              }],
+            })(
+              <Input />
+            )}
+          </FormItem>
+
+          <FormItem
+            {...formItemLayout}
             label="设置密码"
             hasFeedback
           >
@@ -186,7 +200,7 @@ class MainPanelPage extends React.Component {
       }
 
       const param = {
-        userPhone: values['userPhone'],
+        phone: values['userPhone'],
         password: values['password'],
       }
 
@@ -216,8 +230,9 @@ class MainPanelPage extends React.Component {
       }
 
       const param = {
-        userPhone: values['userPhone'],
-        verifiedCode: values['verifiedCode'],
+        phone: values['userPhone'],
+        verifyCode: values['verifiedCode'],
+        stdNo: values['stdNo'],
         password:values['password'],
       }
 
@@ -276,7 +291,7 @@ class MainPanelPage extends React.Component {
 
 
     const param = {
-      userPhone: userPhone,
+      phone: userPhone,
     }
 
     this.props.dispatch({
