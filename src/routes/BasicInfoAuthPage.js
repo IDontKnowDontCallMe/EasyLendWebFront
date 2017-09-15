@@ -10,6 +10,26 @@ created at 2017.9.11 by SJL
 
 class BasicInfoAuthPage extends React.Component {
 
+    doBasicAuth = (param) => {
+
+      if(this.props.loginUser.userPhone==null){
+        this.props.dispatch({
+          type:'loginUser/showLoginForm',
+        })
+
+        return;
+      }
+      else{
+
+        this.props.dispatch({
+          type:'basicInfoAuth/doBasicAuth',
+          payload: {...param}
+        })
+      }
+
+
+    }
+
 
     updateIdentityCardPhoto = (param) => {
 
@@ -44,6 +64,9 @@ class BasicInfoAuthPage extends React.Component {
                 basicInfoAuth={this.props.basicInfoAuth}
                 updateIdentityCardPhoto={this.updateIdentityCardPhoto}
                 updateFacePhoto={this.updateFacePhoto}
+                doBasicAuth={this.doBasicAuth}
+                userPhone={this.props.loginUser.userPhone}
+                loading={this.props.basicInfoAuth.confirmLoading}
               />
           }
         </div>
@@ -53,9 +76,10 @@ class BasicInfoAuthPage extends React.Component {
 
 }
 
-function mapStateToProps({ basicInfoAuth }) {
+function mapStateToProps({ basicInfoAuth, loginUser }) {
   return {
     basicInfoAuth,
+    loginUser,
   };
 }
 

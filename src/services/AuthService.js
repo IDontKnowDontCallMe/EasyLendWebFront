@@ -1,4 +1,4 @@
-
+import {request} from "../utils/request"
 
 /*
 *
@@ -27,8 +27,16 @@ export async function basicAuth(param) {
 
   return {
     code: 0,
-    message: 'succcess',
+    message: 'success',
   };
+
+  // return request('/credit/checkBasicData', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': "multipart/form-data",
+  //   },
+  //   body: {...param},
+  // })
 
 }
 
@@ -47,7 +55,7 @@ export async function schoolAuth(param) {
 
   return {
     code: 0,
-    message: 'succcess',
+    message: 'success',
   };
 
 }
@@ -68,7 +76,7 @@ export async function ICBCAuth(param) {
 
   return {
     code: 0,
-    message: 'succcess',
+    message: 'success',
   };
 
 }
@@ -87,7 +95,7 @@ export async function ZhiMaAuth(param) {
 
   return {
     code: 0,
-    message: 'succcess',
+    message: 'success',
   };
 
 }
@@ -109,7 +117,7 @@ export async function incomeAuth(param) {
 
   return {
     code: 0,
-    message: 'succcess',
+    message: 'success',
   };
 
 }
@@ -129,7 +137,7 @@ export async function XueXinAuth(param) {
 
   return {
     code: 0,
-    message: 'succcess',
+    message: 'success',
   };
 
 }
@@ -142,19 +150,34 @@ export async function XueXinAuth(param) {
  */
 export async function getAuthState(param) {
 
-  console.log('AuthService: getAuthState');
-  console.log(param);
+  // console.log('AuthService: getAuthState');
+  // console.log(param);
+  //
+  // return {
+  //   code: 0,
+  //   message: 'success',
+  //   hasBasicAuth: false,
+  //   hasXueXinAuth: false,
+  //   hasZhiMaAuth: false,
+  //   hasIncomeAuth: false,
+  //   hasICBCAuth: false,
+  //   hasSchoolAuth: false,
+  //   hasAllAuth: false,
+  // };
 
-  return {
-    code: 0,
-    message: 'succcess',
-    hasBasicAuth: false,
-    hasXueXinAuth: false,
-    hasZhiMaAuth: false,
-    hasIncomeAuth: false,
-    hasICBCAuth: false,
-    hasSchoolAuth: false,
-    hasAllAuth: false,
-  };
+  let p = '?phone=';
+
+  if(param.phone){
+    p += param.phone;
+  }
+  else {
+    p='';
+  }
+
+  console.log('/credit/getCheckState'+p)
+
+  return request('/credit/getCheckState'+p, {
+    method: 'GET',
+  })
 
 }

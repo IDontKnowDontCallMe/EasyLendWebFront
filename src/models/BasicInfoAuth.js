@@ -12,6 +12,8 @@ export default {
     identityCardPhotoUrl: null,
     facePhotoUrl: null,
 
+    confirmLoading: false,
+
   },
 
   subscriptions: {
@@ -34,9 +36,9 @@ export default {
 
     *queryAuthState({payload},{call, put, select}){
 
-      const userId = yield select(state => state.loginUser.userId);
+      const userId = yield select(state => state.loginUser.userPhone);
 
-      const data = yield call(getAuthState, {userId: userId});
+      const data = yield call(getAuthState, {phone: userId});
 
       if(data.code===0){
         if(data.message==='success'){
@@ -53,6 +55,9 @@ export default {
 
 
     *doBasicAuth({ payload }, { call, put, select }){
+      yield put({
+        type:'changeLoading'
+      })
 
       const data = yield call(basicAuth, payload);
 
@@ -63,6 +68,10 @@ export default {
           });
         }
       }
+
+      yield put({
+        type:'changeLoading'
+      })
 
     }
 
@@ -97,6 +106,15 @@ export default {
         ...state,
         facePhoto: action.payload.facePhoto,
         facePhotoUrl: action.payload.facePhotoUrl,
+      }
+
+    },
+
+    changeLoading(state, action){
+
+      return {
+        ...state,
+        confirmLoading: !state.confirmLoading,
       }
 
     },

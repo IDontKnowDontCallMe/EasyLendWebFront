@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, Upload, Icon  } from 'antd';
+import { Form, Input, Button, Upload, Icon, message  } from 'antd';
 import styles from './BasicInfoAuthForm.css';
 
 const FormItem = Form.Item;
@@ -68,10 +68,38 @@ class BasicInfoAuthForm extends React.Component{
     this.props.form.validateFields((err, values) => {
       if (!err) {
 
-        console.log(values);
+        if(this.props.basicInfoAuth.identityCardPhotoUrl==null || this.props.basicInfoAuth.facePhotoUrl==null){
+          message.error('请输入照片!')
+          return;
+        }
 
-        console.log(this.props.basicInfoAuth.identityCardPhotoUrl)
-        console.log(this.props.basicInfoAuth.facePhoto)
+        // const formData = new FormData();
+        // formData.append('phone', this.props.userPhone);
+        // formData.append('identityCardPhoto', this.props.basicInfoAuth.identityCardPhoto);
+        // formData.append('facePhoto', this.props.basicInfoAuth.facePhoto);
+        // formData.append('motherName', values['motherName']);
+        // formData.append('motherIncome', values['motherIncome']);
+        // formData.append('motherJob', values['motherWork']);
+        // formData.append('fatherName', values['fatherName']);
+        // formData.append('fatherIncome', values['fatherIncome']);
+        // formData.append('fatherJob', values['fatherJob']);
+
+        const param = {
+          phone: this.props.userPhone,
+          identityCardPhoto: this.props.basicInfoAuth.identityCardPhoto,
+          facePhoto: this.props.basicInfoAuth.facePhoto,
+          motherName: values['motherName'],
+          motherIncome:values['motherIncome'],
+          motherJob:values['motherWork'],
+          fatherName:values['fatherName'],
+          fatherIncome:values['fatherIncome'],
+          fatherJob:values['fatherWork'],
+        };
+
+        console.log(param);
+
+        this.props.doBasicAuth(param);
+
 
       }
     });
@@ -208,7 +236,7 @@ class BasicInfoAuthForm extends React.Component{
             wrapperCol={{ span: 12, offset: 6 }}
           >
             {getFieldDecorator('submit')(
-              <Button type="primary" htmlType="submit" >确认</Button>
+              <Button type="primary" htmlType="submit" loading={this.props.loading}>确认</Button>
             )}
           </FormItem>
 

@@ -11,6 +11,24 @@ created at 2017.9.11 by SJL
 
 class ZhiMaCreditAuthPage extends React.Component {
 
+  doZhiMaAuth = (param) => {
+
+    if(this.props.loginUser.userPhone==null){
+      this.props.dispatch({
+        type:'loginUser/showLoginForm',
+      })
+
+      return;
+    }
+    else{
+      this.props.dispatch({
+        type:'ZhiMaAuth/doZhiMaAuth',
+        payload: {...param}
+      })
+    }
+
+  }
+
   render(){
 
     return(
@@ -22,7 +40,11 @@ class ZhiMaCreditAuthPage extends React.Component {
               headerName="芝麻信用 "
             />
             :
-            <ZhiMaAuthForm/>
+            <ZhiMaAuthForm
+              doZhiMaAuth={this.doZhiMaAuth}
+              userPhone={this.props.loginUser.userPhone}
+              loading={this.props.ZhiMaAuth.confirmLoading}
+            />
         }
 
       </div>
@@ -32,9 +54,10 @@ class ZhiMaCreditAuthPage extends React.Component {
 
 }
 
-function mapStateToProps({ ZhiMaAuth }) {
+function mapStateToProps({ ZhiMaAuth,loginUser }) {
   return {
     ZhiMaAuth,
+    loginUser,
   };
 }
 

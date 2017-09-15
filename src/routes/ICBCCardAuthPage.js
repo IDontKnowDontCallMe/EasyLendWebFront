@@ -10,6 +10,24 @@ created at 2017.9.11 by SJL
 
 class ICBCCardAuthPage extends React.Component {
 
+  doICBCAuth = (param) => {
+
+    if(this.props.loginUser.userPhone==null){
+      this.props.dispatch({
+        type:'loginUser/showLoginForm',
+      })
+
+      return;
+    }
+    else{
+      this.props.dispatch({
+        type:'ICBCAuth/doICBCAuth',
+        payload: {...param}
+      })
+    }
+
+  }
+
   render() {
 
     return (
@@ -22,7 +40,11 @@ class ICBCCardAuthPage extends React.Component {
               headerName="工行银行卡认证 "
             />
             :
-            <ICBCCardForm/>
+            <ICBCCardForm
+              doICBCAuth={this.doICBCAuth}
+              userPhone={this.props.loginUser.userPhone}
+              loading={this.props.ICBCAuth.confirmLoading}
+            />
         }
       </div>
     );
@@ -31,9 +53,10 @@ class ICBCCardAuthPage extends React.Component {
 
 }
 
-function mapStateToProps({ ICBCAuth }) {
+function mapStateToProps({ ICBCAuth, loginUser }) {
   return {
     ICBCAuth,
+    loginUser
   };
 }
 

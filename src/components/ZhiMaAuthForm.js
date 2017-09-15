@@ -4,6 +4,14 @@ import { Message, Icon, Button, Grid, Divider } from 'semantic-ui-react';
 
 class ZhiMaAuthForm extends React.Component {
 
+  onClick = () => {
+
+    this.props.doZhiMaAuth({
+      permit: 1,
+      phone: this.props.userPhone,
+    });
+
+  }
 
   render(){
 
@@ -31,7 +39,7 @@ class ZhiMaAuthForm extends React.Component {
 
 
         <Grid.Column verticalAlign="middle">
-          <Button primary size="massive" attached="right">芝麻信用授权</Button>
+          <Button primary size="massive" attached="right" onClick={this.onClick} loading={this.props.loading}>芝麻信用授权</Button>
         </Grid.Column>
 
       </Grid>

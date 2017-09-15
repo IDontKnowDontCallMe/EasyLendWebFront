@@ -10,6 +10,25 @@ created at 2017.9.11 by SJL
 
 class SchoolAuthPage extends React.Component {
 
+
+  doSchoolAuth = (param) => {
+
+    if(this.props.loginUser.userPhone==null){
+      this.props.dispatch({
+        type:'loginUser/showLoginForm',
+      })
+
+      return;
+    }
+    else{
+      this.props.dispatch({
+        type:'schoolAuth/doSchoolAuth',
+        payload: {...param}
+      })
+    }
+
+  }
+
   render(){
 
     return (
@@ -23,7 +42,11 @@ class SchoolAuthPage extends React.Component {
               headerName="教务网认证 "
             />
             :
-            <SchoolAuthForm/>
+            <SchoolAuthForm
+              doSchoolAuth={this.doSchoolAuth}
+              userPhone={this.props.loginUser.userPhone}
+              loading={this.props.schoolAuth.confirmLoading}
+            />
         }
 
       </div>
@@ -34,9 +57,10 @@ class SchoolAuthPage extends React.Component {
 
 }
 
-function mapStateToProps({ schoolAuth }) {
+function mapStateToProps({ schoolAuth,loginUser }) {
   return {
     schoolAuth,
+    loginUser,
   };
 }
 
