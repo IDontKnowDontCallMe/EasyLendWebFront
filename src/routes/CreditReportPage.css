@@ -7,3 +7,11 @@
   left: 30px;
   font-family:"微软雅黑","黑体","宋体";
 }
+
+.label2{
+  position: relative;
+  left: 30px;
+  font-size: 1.5rem;
+  margin-right: 20px;
+  font-family:"微软雅黑","黑体","宋体";
+}
