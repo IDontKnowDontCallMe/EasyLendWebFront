@@ -397,6 +397,7 @@ class MainPanelPage extends React.Component {
 
 function mapStateToProps({loginUser}) {
   return {
+    
     loginUser,
   };
 }
