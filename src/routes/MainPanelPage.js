@@ -387,7 +387,7 @@ class MainPanelPage extends React.Component {
         </Content>
         <Footer style={{ textAlign: 'center', background: '#404040' }}>
           <div className={styles.footerWords}>
-            Easy Lend ©2017 Created by NJU team
+            Future Credit ©2017 Created by NJU Uranus
           </div>
         </Footer>
       </Layout>
