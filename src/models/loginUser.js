@@ -23,34 +23,34 @@ export default {
     setup({ dispatch, history }) {
       history.listen((location) => {
         if (pathToRegexp('/auth/investment').exec(location.pathname)) {
-          document.title = '严易贷-投资';
+          document.title = '未来信-投资';
         }
         else if(pathToRegexp('/auth/creditCharts').exec(location.pathname)) {
-          document.title = '严易贷-数据分析';
+          document.title = '未来信-数据分析';
         }
         else if(pathToRegexp('/auth/creditReport').exec(location.pathname)) {
-          document.title = '严易贷-数据记录';
+          document.title = '未来信-数据记录';
         }
         else if(pathToRegexp('/auth/basicAuth').exec(location.pathname)) {
-          document.title = '严易贷-基本信息认证';
+          document.title = '未来信-基本信息认证';
         }
         else if(pathToRegexp('/auth/icbcAuth').exec(location.pathname)) {
-          document.title = '严易贷-工商银行卡绑定';
+          document.title = '未来信-工商银行卡绑定';
         }
         else if(pathToRegexp('/auth/schoolAuth').exec(location.pathname)) {
-          document.title = '严易贷-教务网认证';
+          document.title = '未来信-教务网认证';
         }
         else if(pathToRegexp('/auth/zhimaAuth').exec(location.pathname)) {
-          document.title = '严易贷-芝麻信用认证';
+          document.title = '未来信-芝麻信用认证';
         }
         else if(pathToRegexp('/homepage').exec(location.pathname)) {
-          document.title = '严易贷-首页';
+          document.title = '未来信-首页';
         }
         else if(pathToRegexp('/auth').exec(location.pathname)) {
-          document.title = '严易贷-基本信息认证';
+          document.title = '未来信-基本信息认证';
         }
         else if(pathToRegexp('/').exec(location.pathname)) {
-          document.title = '严易贷-首页';
+          document.title = '未来信-首页';
         }
 
       });

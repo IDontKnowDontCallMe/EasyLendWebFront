@@ -64,7 +64,7 @@ const basic_data = [{
 
 const getBasicInfoDataByReport = (CreditReport) => {
 
-  if(CreditReport[0][0]){
+  if(CreditReport && CreditReport[0] && CreditReport[0][0]){
     return [{
       key: 1,
       name: CreditReport[0][0]['name'],
@@ -73,8 +73,8 @@ const getBasicInfoDataByReport = (CreditReport) => {
       ZhiMaCredit: CreditReport[0][0]['ZhiMaCredit'],
       father_occupation: CreditReport[0][0]['father_occupation'],
       father_revenue: CreditReport[0][0]['father_revenue'],
-      mother_occupation: CreditReport[0][0]['occupation'],
-      mother_revenue: CreditReport[0][0]['revenue'],
+      mother_occupation: CreditReport[0][0]['mother_occupation'],
+      mother_revenue: CreditReport[0][0]['mother_revenue'],
     }];
   }
   else {
@@ -132,7 +132,7 @@ const eduInfo_data = [{
 
 const getEduInfoDataByReport = (CreditReport) => {
 
-  if(CreditReport[1][0]){
+  if(CreditReport && CreditReport[1] &&CreditReport[1][0]){
     return [{
       key: '1',
       university: CreditReport[1][0]['university'],
@@ -191,7 +191,7 @@ for (let i = 0; i < 18; i++) {
 
 const getBankAccountDataByCreditReport = (CreditReport) => {
 
-  if(CreditReport[2]){
+  if(CreditReport && CreditReport[2]){
 
     const bankAccount_data = [];
     for (let i = 0; i < CreditReport[2].length; i++) {
@@ -255,7 +255,7 @@ const getScholarshipDataByCreditReport = (CreditReport) => {
   //服务器好像没返回这个... - -
 
   const scholarship_data = [];
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 1; i++) {
     scholarship_data.push({
       key: i,
       date: '2016-07-18',
@@ -300,7 +300,7 @@ for (let i = 0; i < 2; i++) {
 
 const getVolunteerDataByCreditReport = (CreditReport) => {
 
-  if(CreditReport[3]){
+  if(CreditReport && CreditReport[3]){
 
     const volunteer_data = [];
     for (let i = 0; i < CreditReport[3].length; i++) {
@@ -335,7 +335,7 @@ const getMainContent = (loginUser, CreditReport ) => {
         <div className={styles.table}>
           <Table
             columns={basicData_columns}
-            dataSource={basic_data}
+            dataSource={getBasicInfoDataByReport(CreditReport.data)}
             bordered
             title={() => '报告基本信息'}
             pagination={false}
@@ -344,7 +344,7 @@ const getMainContent = (loginUser, CreditReport ) => {
         <div className={styles.table}>
           <Table
             columns={eduInfo_columns}
-            dataSource={eduInfo_data}
+            dataSource={getEduInfoDataByReport(CreditReport.data)}
             bordered
             title={() => '报告学校信息'}
             pagination={false}
@@ -353,7 +353,7 @@ const getMainContent = (loginUser, CreditReport ) => {
         <div className={styles.table}>
           <Table
             columns={scholarship_columns}
-            dataSource={scholarship_data}
+            dataSource={getScholarshipDataByCreditReport(CreditReport.data)}
             bordered
             title={() => '报告奖学金获奖记录'}
             showSizeChanger={true}
@@ -364,7 +364,7 @@ const getMainContent = (loginUser, CreditReport ) => {
         <div className={styles.table}>
           <Table
             columns={volunteer_columns}
-            dataSource={volunteer_data}
+            dataSource={getVolunteerDataByCreditReport(CreditReport.data)}
             bordered
             title={() => '报告志愿活动记录'}
             showSizeChanger={true}
@@ -375,7 +375,7 @@ const getMainContent = (loginUser, CreditReport ) => {
         <div className={styles.table}>
           <Table
             columns={bankAccount_columns}
-            dataSource={bankAccount_data}
+            dataSource={getBankAccountDataByCreditReport(CreditReport.data)}
             bordered
             title={() => '报告银行卡消费记录'}
             showSizeChanger={true}

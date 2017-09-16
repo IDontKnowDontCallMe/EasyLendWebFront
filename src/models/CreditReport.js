@@ -9,6 +9,9 @@ export default {
 
   state: {
     hasAllAuth: false,
+
+    data:null,
+
     idCard: null,
     stdNo: null,
     name: null,
@@ -33,7 +36,8 @@ export default {
     setup({dispatch, history}) {
       history.listen((location) => {
         const match = pathToRegexp('/auth/creditReport').exec(location.pathname);
-        if (match) {
+        const match2 = pathToRegexp('/auth/creditCharts').exec(location.pathname);
+        if (match || match2) {
           dispatch({
             type: 'ifAllAuthorized',
           });
@@ -46,6 +50,12 @@ export default {
     *ifAllAuthorized({payload},{call, put, select}){
 
       const userId = yield select(state => state.loginUser.userPhone);
+
+      if(!userId){
+        console.log('not login!!!')
+        return;
+      }
+
       const data = yield call(getAuthState, {phone: userId});
 
       if (data.code === 0) {
@@ -68,22 +78,38 @@ export default {
 
     *getCreditReport({payload}, {call, put}){
       const data = yield call(getCreditReport, payload);
-      if (data.code === 0) {
-        if (data.message === 'success') {
-          console.log(credit)
+      if (data[0][0]) {
+        if (true) {
           console.log(data)
           yield put({
             type: 'setInfo',
             payload: {
-              idCard: payload.idCard, stdNo: payload.stdNo, name: payload.name,
-              school: payload.school, major: payload.major, grade: payload.grade, gpa: payload.gpa,
-              home: payload.home, motherName: payload.motherName, motherIncome: payload.motherIncome,
-              motherJob: payload.motherJob, fatherName: payload.fatherName, fatherIncome: payload.fatherIncome,
-              fatherJob: payload.fatherJob, zhiMaCredit: payload.zhiMaCredit, consumeRecord: payload.consumeRecord,
-              volunteerRecord: payload.volunteerRecord, scholarship: payload.scholarship
+              data: data,
+
+              // idCard: payload.idCard,
+              // stdNo: payload.stdNo,
+              // name: payload.name,
+              // school: payload.school,
+              // major: payload.major,
+              // grade: payload.grade,
+              // gpa: payload.gpa,
+              // home: payload.home,
+              // motherName: payload.motherName,
+              // motherIncome: payload.motherIncome,
+              // motherJob: payload.motherJob,
+              // fatherName: payload.fatherName,
+              // fatherIncome: payload.fatherIncome,
+              // fatherJob: payload.fatherJob,
+              // zhiMaCredit: payload.zhiMaCredit,
+              // consumeRecord: payload.consumeRecord,
+              // volunteerRecord: payload.volunteerRecord,
+              // scholarship: payload.scholarship
             },
           });
         }
+      }
+      else {
+        message.error('网络错误')
       }
     }
   },
@@ -100,6 +126,7 @@ export default {
     setInfo(state, action) {
       return {
         ...state,
+        data: action.payload.data,
         idCard: action.payload.idCard,
         stdNo: action.payload.stdNo,
         name: action.payload.name,

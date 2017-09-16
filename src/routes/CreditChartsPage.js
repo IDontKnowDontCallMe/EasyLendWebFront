@@ -7,6 +7,7 @@ import ReactEcharts from 'echarts-for-react';
 import PageHeader from '../components/PageHeader.js';
 import AnimatedNumber from 'react-animated-number';
 import styles from './CreditChartsPage.css';
+import {connect} from 'dva'
 
 
 const option = {
@@ -146,12 +147,12 @@ const option = {
 
 class CreditChartsPage extends React.Component {
 
-  foo = () => {
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('cost_chart'));
-    // 绘制图表
-    myChart.setOption(option);
-  }
+  // foo = () => {
+  //   // 基于准备好的dom，初始化echarts实例
+  //   var myChart = echarts.init(document.getElementById('cost_chart'));
+  //   // 绘制图表
+  //   myChart.setOption(option);
+  // }
 
   render() {
     return (
@@ -161,7 +162,7 @@ class CreditChartsPage extends React.Component {
           <span className={styles.label}>预测借款违约概率:</span>
           <AnimatedNumber
             component="text"
-            value={100}
+            value={this.props.CreditReport.data && this.props.CreditReport.data[4]? this.props.CreditReport.data[4] : 0}
             initialValue={0}
             style={{
               transition: '0.8s ease-out',
@@ -193,4 +194,11 @@ class CreditChartsPage extends React.Component {
   }
 }
 
-export default CreditChartsPage;
+function mapStateToProps({ CreditReport, loginUser }) {
+  return {
+    CreditReport,
+    loginUser,
+  };
+}
+
+export default connect(mapStateToProps)(CreditChartsPage);
