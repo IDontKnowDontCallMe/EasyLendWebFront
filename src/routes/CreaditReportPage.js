@@ -7,7 +7,6 @@ import {Table} from 'antd';
 import styles from './CreditReportPage.css';
 import PageHeader from '../components/PageHeader.js';
 import {connect} from 'dva';
-import CreditReport from "../models/CreditReport";
 
 
 /**
@@ -385,7 +384,7 @@ const getMainContent = (loginUser, CreditReport ) => {
         </div>
       </div>
       :
-      <span className={styles.label}>请先前往信息验证页面完成所有验证！</span>
+      <span className={styles.label2}>请先前往信息验证页面完成所有验证！</span>
 
   );
 
@@ -405,7 +404,7 @@ class CreaditReportPage extends React.Component {
          this.props.loginUser.userPhone ?
            getMainContent(this.props.loginUser, this.props.CreditReport)
            :
-           <span className={styles.label}>请先登录！</span>
+           <span className={styles.label2}>请先登录！</span>
         }
       </div>
     );

@@ -83,7 +83,7 @@ const option = {
     type: 'bar',
     symbolSize: 8,
     //symbol: 'circle',
-    data: [4, 3, 2, 1, 2, 1]
+    data: [0, 0, 0, 0, 0, 0]
   }, {
     type: 'pie',
     center: ['83%', '50%'],
@@ -94,7 +94,7 @@ const option = {
       formatter: "{b} : {c}次 ({d}%)"
     },
     data: [{
-      value: 4,
+      value: 0,
       name: '0~200元',
       itemStyle: {
         normal: {
@@ -102,7 +102,7 @@ const option = {
         }
       }
     }, {
-      value: 3,
+      value: 0,
       name: '200~400元',
       itemStyle: {
         normal: {
@@ -110,7 +110,7 @@ const option = {
         }
       }
     }, {
-      value: 4,
+      value: 0,
       name: '400~600元',
       itemStyle: {
         normal: {
@@ -118,7 +118,7 @@ const option = {
         }
       }
     }, {
-      value: 1,
+      value: 0,
       name: '600~800元',
       itemStyle: {
         normal: {
@@ -126,7 +126,7 @@ const option = {
         }
       }
     }, {
-      value: 2,
+      value: 0,
       name: '800~1000元',
       itemStyle: {
         normal: {
@@ -134,7 +134,7 @@ const option = {
         }
       }
     }, {
-      value: 1,
+      value: 0,
       name: '1000元以上',
       itemStyle: {
         normal: {
